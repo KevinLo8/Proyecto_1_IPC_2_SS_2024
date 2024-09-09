@@ -1,8 +1,5 @@
 package com.main.codigo_fuente.app.backend.usuarios;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 import com.main.codigo_fuente.app.backend.database.ConectionDB;
 import com.main.codigo_fuente.app.backend.exceptions.UserNameExistsException;
 
@@ -15,6 +12,7 @@ public class CreadorUsuario {
     public Usuario crearUsuario(HttpServletRequest req) throws UserNameExistsException {
 
         Usuario nuevoUsuario = crearYValidar(req);
+        nuevoUsuario.insertar(db);
 
         return null;
     }
@@ -27,17 +25,8 @@ public class CreadorUsuario {
         nuevoUsuario.setTipoUsuario(TipoUsuarioEnum.valueOf(req.getParameter("tipo")));
         nuevoUsuario.setContraseñaUsuario(req.getParameter("contraseña"));
 
-        String select = "SELECT * FROM usuario WHERE nombre = " + nuevoUsuario.getNombreUsuario();
-        ResultSet resultSet = db.selectData(select);
-
-        try {
-            if (resultSet.next()) {
-                throw new UserNameExistsException("Nombre de usuario ya existente");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
+        nuevoUsuario.validar(db);
+    
         return nuevoUsuario;
     }
 
