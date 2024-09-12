@@ -16,7 +16,7 @@
         <jsp:include page="../includes/header.jsp"/>
         <div class="container">
             <div class="offset-2 col-8">
-                <form>
+                <form method="POST" action="${pageContext.servletContext.contextPath}/inicio_sesion/inicio_sesion-servlet">
                     <div class="mb-3">
                         <label for=" sampleInpuUserName" class="form-label">Username</label>
                         <input type="text" class="form-control" id=" sampleInpuUserName">
