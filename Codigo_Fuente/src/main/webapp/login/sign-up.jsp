@@ -23,7 +23,7 @@
             <div class="offset-2 col-8">
                 <div class="col-lg-12">
                     <h4 class="mb-3">Billing address</h4>
-                    <form class="needs-validation" novalidate="">
+                    <form class="needs-validation" method="POST" action="${pageContext.servletContext.contextPath}/Registarse/Registarse-servlet">
                         
                         <div class="row g-3 mb-4">
                             
