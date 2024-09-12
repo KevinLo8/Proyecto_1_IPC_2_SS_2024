@@ -22,7 +22,7 @@ public class ConectionDB {
         }
     }
 
-    public void insertData(String insert) {
+    protected void insertData(String insert) {
         try {
             Statement statementInsert = connection.createStatement();
             int rowsAffected = statementInsert.executeUpdate(insert);
@@ -33,7 +33,7 @@ public class ConectionDB {
         }
     }
 
-    public ResultSet selectData(String select) {
+    protected ResultSet selectData(String select) {
         try {
             Statement statementInsert = connection.createStatement();
             ResultSet resultSet = statementInsert.executeQuery(select);
@@ -41,6 +41,14 @@ public class ConectionDB {
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public void cerrarDB() {
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }
