@@ -24,7 +24,7 @@
                 <button type="button" class="btn btn-outline-light me-2" 
                         onclick="javascript:window.location = '${pageContext.servletContext.contextPath}/login/login.jsp';">Iniciar sesión</button>
                 <button type="button" class="btn btn-warning"
-                        onclick="javascript:window.location = '${pageContext.servletContext.contextPath}/login/sign-up.jsp';">registrase</button>
+                        onclick="javascript:window.location = '${pageContext.servletContext.contextPath}/login/sign-up.jsp';">registrarse</button>
             </div>
         </header>
     </div>

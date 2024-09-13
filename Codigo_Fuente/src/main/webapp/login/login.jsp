@@ -19,16 +19,19 @@
                 <form method="POST" action="${pageContext.servletContext.contextPath}/inicio_sesion/inicio_sesion-servlet">
                     <div class="mb-3">
                         <label for=" sampleInpuUserName" class="form-label">Username</label>
-                        <input type="text" class="form-control" id=" sampleInpuUserName">
+                        <input type="text" class="form-control" name="usuario" value="${param.usuario}">
                     </div>
                     
                     <div class="mb-3">
                         <label for="sampleInputPassword" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="sampleInputPassword">
+                        <input type="password" class="form-control" name="contraseña">
                     </div>
                     
-                    <button type="submit" class="btn btn-primary">iniciar sesión</button>
+                    <button method="POST" class="btn btn-primary">iniciar sesión</button>
                     
+                    <div class="mb-3 mt-3">
+                        <h1>${error}</h1>
+                    </div>
                     <div class="mb-3 mt-3">
                         <label for="sampleInputPassword" class="form-label">No tienes una cuenta?</label>
                         <a class="link" href="sign-up.jsp">Registrarse</a>

@@ -22,7 +22,7 @@
 
             <div class="offset-2 col-8">
                 <div class="col-lg-12">
-                    <h4 class="mb-3">Billing address</h4>
+                    <h4 class="mb-3">Datos para registrase</h4>
                     <form class="needs-validation" method="POST" action="${pageContext.servletContext.contextPath}/Registarse/Registarse-servlet">
                         
                         <div class="row g-3 mb-4">
@@ -30,7 +30,7 @@
                             <div class="col-12">
                                 <label for="username" class="form-label">Nombre de usuario</label>
                                 <div class="input-group has-validation">
-                                    <input type="text" class="form-control" id="username" placeholder="Nombre de usuario" required="">
+                                    <input type="text" class="form-control" id="username" placeholder="Nombre de usuario" name="usuario">
                                     <div class="invalid-feedback">
                                         se requiere un nombre de usuario.
                                     </div>
@@ -40,27 +40,19 @@
                             <div class="col-12">
                                 <label>Seleccione el tipo de cuenta que quiere crear</label>
                                 
-                                <select class="form-select">
+                                <select class="form-select" name="tipo">
                                     <option selected>----Seleccione tipo----</option>
-                                    <option value="Administrador">Administrador</option>
-                                    <option value="Comprador">Comprador</option>
-                                    <option value="Editor">Editor</option>
-                                    <option value="Suscriptor">Suscriptor</option>
+                                    <option value="ADMINISTRADOR">Administrador</option>
+                                    <option value="COMPRADOR">Comprador</option>
+                                    <option value="EDITOR">Editor</option>
+                                    <option value="SUSCRIPTOR">Suscriptor</option>
                                 </select>
                                 
                             </div>
 
                             <div class="col-12">
                                 <label for="password" class="form-label">Contraseña</label>
-                                <input type="password" class="form-control" id="password" placeholder="Contraseña" required="">
-                                <div class="invalid-feedback">
-                                    se requiere una contraseña.
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <label for="address" class="form-label">Confirmar contraseña</label>
-                                <input type="password" class="form-control" id="password_confir" placeholder="Confirmar contraseña" required="">
+                                <input type="password" class="form-control" id="password" placeholder="Contraseña" name="contraseña">
                                 <div class="invalid-feedback">
                                     se requiere una contraseña.
                                 </div>
@@ -68,12 +60,11 @@
                             
                         </div>
 
-                        <button class="w-100 btn btn-primary btn-lg" type="submit" id="btn1">Registrarse</button>
+                        <button class="w-100 btn btn-primary btn-lg" method="POST">Registrarse</button>
                     </form>
                 </div>
             </div>
         </div>
-        <jsp:include page="../includes/footer.jsp"/>
-                
+        <jsp:include page="../includes/footer.jsp"/>      
     </body>
 </html>
