@@ -1,5 +1,7 @@
 package com.main.codigo_fuente.app.controllers.inicio_sesion;
 
+import com.main.codigo_fuente.app.backend.LogIn.ChequeadorLogIn;
+import com.main.codigo_fuente.app.backend.exceptions.DataErrorException;
 import java.io.IOException;
 
 import jakarta.servlet.ServletException;
@@ -10,8 +12,17 @@ import jakarta.servlet.http.*;
 public class ControladorInicioSesion extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ChequeadorLogIn chequeadorLogIn = new ChequeadorLogIn();
+        try {
+            chequeadorLogIn.ChequearUsuario(req);
+        } catch (DataErrorException ex) {
+            String error = "Nombre de usuario o contraseña incorrecto.";
+            req.setAttribute("error", error);
+            req.getRequestDispatcher("/login/login.jsp").forward(req, resp);
+        }
+        req.getSession().setAttribute("nombre-usuario", req.getAttribute("usuario"));
+        req.getRequestDispatcher("/login/InicioSesionCompleto.jsp").forward(req, resp);
     }
 
 }

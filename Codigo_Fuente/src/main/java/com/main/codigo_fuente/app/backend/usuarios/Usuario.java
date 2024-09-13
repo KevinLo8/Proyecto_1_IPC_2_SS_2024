@@ -1,6 +1,8 @@
 package com.main.codigo_fuente.app.backend.usuarios;
 
 import jakarta.servlet.http.HttpServletRequest;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Usuario {
 
@@ -27,9 +29,15 @@ public class Usuario {
         this.contraseñaUsuario = contraseñaUsuario;
     }
 
-    public void crear(HttpServletRequest req) {
+    public void crearReq(HttpServletRequest req) {
         setNombreUsuario(req.getParameter("usuario"));
         setTipoUsuario(TipoUsuarioEnum.valueOf(req.getParameter("tipo")));
         setContraseñaUsuario(req.getParameter("contraseña"));
+    }
+    
+    public void crearRes(ResultSet resultSet) throws SQLException{
+                setNombreUsuario(resultSet.getString("nombre_usuario"));
+                setTipoUsuario(TipoUsuarioEnum.valueOf(resultSet.getString("rol")));
+                setContraseñaUsuario(resultSet.getString("contraseña"));
     }
 }
