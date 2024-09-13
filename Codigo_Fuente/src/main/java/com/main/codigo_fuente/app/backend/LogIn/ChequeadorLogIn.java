@@ -2,7 +2,6 @@ package com.main.codigo_fuente.app.backend.LogIn;
 
 import com.main.codigo_fuente.app.backend.database.ClaseDBUsuario;
 import com.main.codigo_fuente.app.backend.exceptions.DataErrorException;
-import com.main.codigo_fuente.app.backend.usuarios.TipoUsuarioEnum;
 import com.main.codigo_fuente.app.backend.usuarios.Usuario;
 
 import jakarta.servlet.http.HttpServletRequest;
