@@ -9,16 +9,20 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Inicio de Sesión completo</title>
+        <title>Cierrre de Sesión completo</title>
         <jsp:include page="../includes/resources.jsp"/>
     </head>
     <body>
+        <%
+        request.getSession().removeAttribute("usuario");
+        request.getSession().removeAttribute("nombreUsuario");
+        %>
         <jsp:include page="../includes/header.jsp"/>
         <div class="container my-5">
             <div class="position-relative p-5 text-center text-muted bg-body border border-dashed rounded-5">
-                <h1 class="text-body-emphasis">Inicio de Sesión Completo</h1>
+                <h1 class="text-body-emphasis">Cierre de Sesión Completo</h1>
                 <p class="col-lg-6 mx-auto mb-4">
-                    Se a iniciado la sesión correctamente.
+                    Se a cerrado la sesión correctamente.
                 </p>
                 <button class="btn btn-primary px-5 mb-5" type="button"
                         onclick="javascript:window.location = '${pageContext.servletContext.contextPath}/index.jsp';">
