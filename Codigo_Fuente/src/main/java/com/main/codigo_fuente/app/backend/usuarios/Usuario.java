@@ -1,8 +1,7 @@
 package com.main.codigo_fuente.app.backend.usuarios;
 
 import jakarta.servlet.http.HttpServletRequest;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class Usuario {
 

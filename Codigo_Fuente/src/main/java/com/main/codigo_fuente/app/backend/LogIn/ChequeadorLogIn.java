@@ -12,7 +12,7 @@ public class ChequeadorLogIn {
 
     private final ClaseDBUsuario db = new ClaseDBUsuario();
 
-    public Boolean ChequearUsuario(HttpServletRequest req) throws DataErrorException {
+    public Usuario ChequearUsuario(HttpServletRequest req) throws DataErrorException {
 
         ResultSet dataUsuario = db.preparedUser(req.getParameter("usuario"), req.getParameter("contraseña"));
         Usuario usuario = null;
@@ -31,7 +31,7 @@ public class ChequeadorLogIn {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return null;
+        return usuario;
     }
 
 }

@@ -18,7 +18,7 @@
             <div class="position-relative p-5 text-center text-muted bg-body border border-dashed rounded-5">
                 <h1 class="text-body-emphasis">Inicio de Sesión Completo</h1>
                 <p class="col-lg-6 mx-auto mb-4">
-                    Se a iniciado de sesión correctamente.
+                    Se a iniciado la sesión correctamente.
                 </p>
                 <button class="btn btn-primary px-5 mb-5" type="button"
                         onclick="javascript:window.location = '${pageContext.servletContext.contextPath}/index.jsp';">

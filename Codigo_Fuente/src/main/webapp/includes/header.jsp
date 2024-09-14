@@ -4,6 +4,7 @@
     Author     : kevin
 --%>
 
+<%@page import="com.main.codigo_fuente.app.backend.usuarios.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <main>
     <div class="container" style="background-color: darkblue">
@@ -20,12 +21,65 @@
                 <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
             </form>
 
+            <%
+                Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+                if (usuario == null) {
+            %>
             <div class="text-end">
                 <button type="button" class="btn btn-outline-light me-2" 
                         onclick="javascript:window.location = '${pageContext.servletContext.contextPath}/login/login.jsp';">Iniciar sesión</button>
                 <button type="button" class="btn btn-warning"
                         onclick="javascript:window.location = '${pageContext.servletContext.contextPath}/login/sign-up.jsp';">registrarse</button>
             </div>
+            <%
+            } else {
+            %>
+            <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    ${nombreUsuario}
+                </a>
+                <ul class="dropdown-menu" style="">
+                    <li><a class="dropdown-item" href="#">Ver Perfil</a></li>
+                        <%
+                            switch (usuario.getTipoUsuario().toString()) {
+                                case "ADMINISTRADOR":
+                        %>
+                    <li><a class="dropdown-item" href="#">Editar Precios de Anuncios</a></li>
+                    <li><a class="dropdown-item" href="#">Revisar Revistas</a></li>
+                    <li><a class="dropdown-item" href="#">Editar Precios de Revistas</a></li>
+                    <li><a class="dropdown-item" href="#">Ver Reportes</a></li>
+                        <%
+                                break;
+                            case "COMPRADOR":
+                        %>
+                    <li><a class="dropdown-item" href="#">Comprar Anuncio</a></li>
+                    <li><a class="dropdown-item" href="#">Ver Anuncios Comprados</a></li>
+                    <li><a class="dropdown-item" href="#">Acrerditar Dinero</a></li>
+                        <%
+                                break;
+                            case "EDITOR":
+                        %>
+                    <li><a class="dropdown-item" href="#">Publicar Revista</a></li>
+                    <li><a class="dropdown-item" href="#">Editar Revistas</a></li>
+                    <li><a class="dropdown-item" href="#">Ver Reportes</a></li>
+                        <%
+                                break;
+                            case "SUSCRIPTOR":
+                        %>
+                    <li><a class="dropdown-item" href="#">Buscardor de Revistas</a></li>
+                    <li><a class="dropdown-item" href="#">Acrerditar Dinero</a></li>
+                        <%
+                                    break;
+                            }
+                        %>
+                    <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/login/CerrarSesionCompleto.jsp">Cerrar Sesión</a></li>
+                </ul>
+            </div>
+            <%
+                }
+            %>
+
+
         </header>
     </div>
 </main>
