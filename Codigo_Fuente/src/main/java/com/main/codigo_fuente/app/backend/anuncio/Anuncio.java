@@ -1,0 +1,75 @@
+package com.main.codigo_fuente.app.backend.anuncio;
+
+import jakarta.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.sql.SQLException;
+import java.time.LocalDate;
+
+import com.main.codigo_fuente.app.backend.database.ClaseDBAnuncio;
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+/**
+ *
+ * @author kevin
+ */
+public class Anuncio {
+
+    private int id;
+    private String usuarioComprador;
+    private String tipoAnuncio;
+    private String duracionAnuncio;
+    private LocalDate fechaActivacion;
+    private File dataAnuncio;
+    private String textoAnuncio;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getUsuarioComprador() {
+        return usuarioComprador;
+    }
+
+    public String getTipoAnuncio() {
+        return tipoAnuncio;
+    }
+
+    public String getDuracionAnuncio() {
+        return duracionAnuncio;
+    }
+
+    public LocalDate getFechaActivacion() {
+        return fechaActivacion;
+    }
+
+    public File getDataAnuncio() {
+        return dataAnuncio;
+    }
+
+    public String getTextoAnuncio() {
+        return textoAnuncio;
+    }
+
+    public void crearReq(HttpServletRequest req, String nombreUsuario) {
+        usuarioComprador = nombreUsuario;
+        tipoAnuncio = req.getParameter("tipo_anuncio");
+        duracionAnuncio = req.getParameter("duracion_anuncio");
+        fechaActivacion = LocalDate.parse(req.getParameter("fecha_activacion"));
+    }
+
+    public void completarReq(ClaseDBAnuncio db, File dataAnuncio, String textoAnuncio) {
+        id = 1;
+        try {
+            while (db.selectAnuncio(id).next()) {
+                id++;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        this.dataAnuncio = dataAnuncio;
+        this.textoAnuncio = textoAnuncio;
+    }
+}

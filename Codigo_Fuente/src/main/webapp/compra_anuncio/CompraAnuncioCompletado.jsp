@@ -1,6 +1,6 @@
 <%-- 
-    Document   : RegistroCompleto
-    Created on : 12 sept 2024, 18:55:12
+    Document   : CompraAnuncioCompletado
+    Created on : 15 sept 2024, 16:42:09
     Author     : kevin
 --%>
 
@@ -9,20 +9,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cierrre de Sesión completo</title>
+        <title>Compra Completada</title>
         <jsp:include page="../includes/resources.jsp"/>
     </head>
     <body>
-        <%
-        request.getSession().removeAttribute("usuario");
-        request.getSession().removeAttribute("nombreUsuario");
-        %>
         <jsp:include page="../includes/header.jsp"/>
         <div class="container my-5">
             <div class="position-relative p-5 text-center text-muted bg-body border border-dashed rounded-5">
-                <h1 class="text-body-emphasis">Cierre de Sesión Completo</h1>
+                <h1 class="text-body-emphasis">Compra de Anuncio Completado</h1>
                 <p class="col-lg-6 mx-auto mb-4">
-                    Se a cerrado la sesión correctamente.
+                    Se ha completado la compra del anuncio correctamente.
                 </p>
                 <button class="btn btn-primary px-5 mb-5" type="button"
                         onclick="javascript:window.location = '${pageContext.servletContext.contextPath}/index.jsp';">

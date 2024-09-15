@@ -36,9 +36,9 @@ public class ClaseDBUsuario extends ConectionDB {
 
     public void insertUser(Usuario usuario) {
         LocalDate localDate = LocalDate.now();
-        String insert = "INSERT INTO usuario (nombre_usuario, rol, contraseña, create_time) "
+        String insert = "INSERT INTO usuario (nombre_usuario, rol, contraseña, fecha_creacion, credito) "
                 + "values('" + usuario.getNombreUsuario() + "','" + usuario.getTipoUsuario().toString() + "','"
-                + usuario.getContraseñaUsuario() + "','" + localDate.toString() + "');";
+                + usuario.getContraseñaUsuario() + "','" + localDate.toString() + "','" + 0 + "');";
 
         insertData(insert);
     }

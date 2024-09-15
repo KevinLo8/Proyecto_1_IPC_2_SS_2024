@@ -52,7 +52,7 @@
                                 break;
                             case "COMPRADOR":
                         %>
-                    <li><a class="dropdown-item" href="#">Comprar Anuncio</a></li>
+                    <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/compra_anuncio/Compra-Anuncio-servlet">Comprar Anuncio</a></li>
                     <li><a class="dropdown-item" href="#">Ver Anuncios Comprados</a></li>
                     <li><a class="dropdown-item" href="#">Acrerditar Dinero</a></li>
                         <%
@@ -72,7 +72,7 @@
                                     break;
                             }
                         %>
-                    <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/login/CerrarSesionCompleto.jsp">Cerrar Sesión</a></li>
+                    <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/inicio_sesion/cerrar_sesion-servlet">Cerrar Sesión</a></li>
                 </ul>
             </div>
             <%

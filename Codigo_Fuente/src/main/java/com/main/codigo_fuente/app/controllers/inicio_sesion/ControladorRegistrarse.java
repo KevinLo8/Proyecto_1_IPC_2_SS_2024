@@ -13,12 +13,21 @@ public class ControladorRegistrarse extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        CreadorUsuario creadorUsuario = new CreadorUsuario();
-        try {
-            creadorUsuario.crearUsuario(req);
-        } catch (UserNameExistsException ex) {
+        if (req.getAttribute("tipo") == null) {
+            String error = "Tipo de usuario no seleccionado.";
+            req.setAttribute("error", error);
+            req.getRequestDispatcher("/login/sign-up.jsp").forward(req, resp);
+        } else {
+            CreadorUsuario creadorUsuario = new CreadorUsuario();
+            try {
+                creadorUsuario.crearUsuario(req);
+            } catch (UserNameExistsException ex) {
+                String error = "Nombre de usuario ya existente.";
+                req.setAttribute("error", error);
+                req.getRequestDispatcher("/login/sign-up.jsp").forward(req, resp);
+            }
+            req.getRequestDispatcher("/login/registroCompletado.jsp").forward(req, resp);
         }
-        req.getRequestDispatcher("/login/registroCompleto.jsp").forward(req, resp);
     }
 
 }
