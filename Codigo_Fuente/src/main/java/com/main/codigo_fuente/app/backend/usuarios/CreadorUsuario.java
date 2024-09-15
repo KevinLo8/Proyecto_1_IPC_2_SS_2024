@@ -13,16 +13,16 @@ public class CreadorUsuario {
 
     public Usuario crearUsuario(HttpServletRequest req) throws UserNameExistsException {
 
-        Usuario Usuario = new Usuario();
-        Usuario.crearReq(req);
+        Usuario usuario = new Usuario();
+        usuario.crearReq(req);
         try {
-            if (db.selectUser(Usuario.getNombreUsuario()).next()) {
+            if (db.selectUser(usuario.getNombreUsuario()).next()) {
                 throw new UserNameExistsException("Nombre de usuario ya existente");
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        db.insertUser(Usuario);
+        db.insertUser(usuario);
         db.cerrarDB();
 
         return null;

@@ -23,7 +23,7 @@ public class ChequeadorLogIn {
                 usuario.crearRes(dataUsuario);
             }
 
-            //db.cerrarDB();
+            db.cerrarDB();
             
             if (usuario == null) {
                 throw new DataErrorException();

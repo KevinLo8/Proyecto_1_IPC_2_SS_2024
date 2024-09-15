@@ -17,6 +17,7 @@
         <div class="container">
             <div class="offset-2 col-8">
                 <form method="POST" action="${pageContext.servletContext.contextPath}/inicio_sesion/inicio_sesion-servlet">
+                    
                     <div class="mb-3">
                         <label for=" sampleInpuUserName" class="form-label">Username</label>
                         <input type="text" class="form-control" name="usuario" value="${param.usuario}">
@@ -32,10 +33,12 @@
                     <div class="mb-3 mt-3">
                         <h1>${error}</h1>
                     </div>
+                    
                     <div class="mb-3 mt-3">
                         <label for="sampleInputPassword" class="form-label">No tienes una cuenta?</label>
                         <a class="link" href="sign-up.jsp">Registrarse</a>
                     </div>
+                    
                 </form>        
             </div>
         </div>

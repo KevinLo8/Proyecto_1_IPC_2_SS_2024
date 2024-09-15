@@ -27,7 +27,7 @@ public class ControladorInicioSesion extends HttpServlet {
 
         req.getSession().setAttribute("usuario", usuario);
         req.getSession().setAttribute("nombreUsuario", usuario.getNombreUsuario());
-        req.getRequestDispatcher("/login/InicioSesionCompleto.jsp").forward(req, resp);
+        req.getRequestDispatcher("/login/InicioSesionCompletado.jsp").forward(req, resp);
     }
 
 }

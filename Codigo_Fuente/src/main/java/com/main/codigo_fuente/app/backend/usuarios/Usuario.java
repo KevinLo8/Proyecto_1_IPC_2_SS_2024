@@ -2,41 +2,55 @@ package com.main.codigo_fuente.app.backend.usuarios;
 
 import jakarta.servlet.http.HttpServletRequest;
 import java.sql.*;
+import java.time.LocalDate;
 
 public class Usuario {
 
     private String nombreUsuario;
-    private TipoUsuarioEnum tipoUsuario;
+    private LocalDate fechaCreacion;
     private String contraseñaUsuario;
+    private TipoUsuarioEnum tipoUsuario;
+    private int credito;
 
     public String getNombreUsuario() {
         return nombreUsuario;
     }
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
-    }
+
     public TipoUsuarioEnum getTipoUsuario() {
         return tipoUsuario;
     }
-    public void setTipoUsuario(TipoUsuarioEnum tipoUsuario) {
-        this.tipoUsuario = tipoUsuario;
-    }
+
     public String getContraseñaUsuario() {
         return contraseñaUsuario;
     }
-    public void setContraseñaUsuario(String contraseñaUsuario) {
-        this.contraseñaUsuario = contraseñaUsuario;
+
+    public LocalDate getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public int getCredito() {
+        return credito;
+    }
+
+    public void setCredito(int credito) {
+        this.credito = credito;
     }
 
     public void crearReq(HttpServletRequest req) {
-        setNombreUsuario(req.getParameter("usuario"));
-        setTipoUsuario(TipoUsuarioEnum.valueOf(req.getParameter("tipo")));
-        setContraseñaUsuario(req.getParameter("contraseña"));
+        nombreUsuario = req.getParameter("usuario");
+        tipoUsuario = TipoUsuarioEnum.valueOf(req.getParameter("tipo"));
+        contraseñaUsuario = req.getParameter("contraseña");
     }
-    
-    public void crearRes(ResultSet resultSet) throws SQLException{
-                setNombreUsuario(resultSet.getString("nombre_usuario"));
-                setTipoUsuario(TipoUsuarioEnum.valueOf(resultSet.getString("rol")));
-                setContraseñaUsuario(resultSet.getString("contraseña"));
+
+    public void crearRes(ResultSet resultSet) throws SQLException {
+        nombreUsuario = resultSet.getString("nombre_usuario");
+        fechaCreacion = resultSet.getDate("fecha_creacion").toLocalDate();
+        tipoUsuario = TipoUsuarioEnum.valueOf(resultSet.getString("rol"));
+        contraseñaUsuario = resultSet.getString("contraseña");
+        credito = resultSet.getInt("credito");
+    }
+
+    public boolean saldoSuficiente(int costo) {
+        return credito > costo;
     }
 }
