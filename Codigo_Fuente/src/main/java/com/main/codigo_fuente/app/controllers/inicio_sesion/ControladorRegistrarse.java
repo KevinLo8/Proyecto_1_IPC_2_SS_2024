@@ -13,7 +13,7 @@ public class ControladorRegistrarse extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (req.getAttribute("tipo") == null) {
+        if (req.getParameter("tipo") == null) {
             String error = "Tipo de usuario no seleccionado.";
             req.setAttribute("error", error);
             req.getRequestDispatcher("/login/sign-up.jsp").forward(req, resp);

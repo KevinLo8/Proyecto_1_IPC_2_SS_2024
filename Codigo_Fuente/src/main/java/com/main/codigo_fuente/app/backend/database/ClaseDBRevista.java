@@ -2,27 +2,25 @@ package com.main.codigo_fuente.app.backend.database;
 
 import java.sql.*;
 
-import com.main.codigo_fuente.app.backend.anuncio.Anuncio;
+import com.main.codigo_fuente.app.backend.revista.Revista;
 
-public class ClaseDBAnuncio extends ConectionDB {
+public class ClaseDBRevista extends ConectionDB {
 
-    public ClaseDBAnuncio() {
+    public ClaseDBRevista() {
         super();
     }
     
-    public ResultSet selectAnuncio(int id) {
-        String select = "SELECT * FROM anuncio WHERE id = '" + id + "';";
+    public ResultSet selectRevista(String nombreRevista) {
+        String select = "SELECT * FROM anuncio WHERE nombre_revista = '" + nombreRevista + "';";
         ResultSet resultSet = selectData(select);
 
         return resultSet;
     }
 
-    public void insertAnuncio(Anuncio anuncio) {
-        String insert = "INSERT INTO anuncio (id, usuario_comprador, tipo_anuncio, duracion_anuncio, fecha_activación, data_anuncio, texto, anuncio) "
-                + "values('" + anuncio.getId() + "','" + anuncio.getUsuarioComprador() + "','"
-                + anuncio.getTipoAnuncio() + "','" + anuncio.getDuracionAnuncio() + "','"
-                + anuncio.getFechaActivacion().toString() + "','" + anuncio.getDataAnuncio() + "','"
-                + anuncio.getTextoAnuncio() + "');";
+    public void insertRevista(Revista revista) {
+        String insert = "INSERT INTO revista (nombre_revista, usuario_publicador, data_revista, precio_suscripcion) "
+                + "values('" + revista.getNombreRevista() + "','" + revista.getUsuarioPublicador() + "','"
+                + revista.getArchivoRevista() + "','" + revista.getPrecioRevista() + "');";
 
         insertData(insert);
     }

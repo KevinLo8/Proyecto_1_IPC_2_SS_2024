@@ -20,12 +20,12 @@
                     
                     <div class="mb-3">
                         <label for=" sampleInpuUserName" class="form-label">Username</label>
-                        <input type="text" class="form-control" name="usuario" value="${param.usuario}">
+                        <input type="text" class="form-control" name="usuario" value="${param.usuario}" required>
                     </div>
                     
                     <div class="mb-3">
                         <label for="sampleInputPassword" class="form-label">Password</label>
-                        <input type="password" class="form-control" name="contraseña">
+                        <input type="password" class="form-control" name="contraseña" required>
                     </div>
                     
                     <button method="POST" class="btn btn-primary">iniciar sesión</button>
@@ -36,7 +36,7 @@
                     
                     <div class="mb-3 mt-3">
                         <label for="sampleInputPassword" class="form-label">No tienes una cuenta?</label>
-                        <a class="link" href="sign-up.jsp">Registrarse</a>
+                        <a class="btn btn-link" role="button" href="sign-up.jsp">Registrarse</a>
                     </div>
                     
                 </form>        

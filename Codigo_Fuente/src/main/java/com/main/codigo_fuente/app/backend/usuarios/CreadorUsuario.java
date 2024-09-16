@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 
 public class CreadorUsuario {
 
-    private ClaseDBUsuario db = new ClaseDBUsuario();
+    private final ClaseDBUsuario db = new ClaseDBUsuario();
 
     public Usuario crearUsuario(HttpServletRequest req) throws UserNameExistsException {
 

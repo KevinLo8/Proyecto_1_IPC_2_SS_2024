@@ -27,25 +27,40 @@ public class ControladorGuardadoAnuncio extends HttpServlet {
         String texto = null;
         CreadorAnuncio creadorAnuncio = new CreadorAnuncio();
 
-        if (anuncio.getTipoAnuncio().equals("TEXTO") || anuncio.getTipoAnuncio().equals("TEXTO E IMAGEN")) {
-            texto = req.getParameter("texto");
-        }
-        if (anuncio.getTipoAnuncio().equals("TEXTO E IMAGEN") || anuncio.getTipoAnuncio().equals("VIDEO")) {
-            Part filepart = req.getPart("archivo");
-
-            if (filepart != null) {
-                InputStream inputStream = filepart.getInputStream();
-
+        switch (anuncio.getTipoAnuncio()) {
+            case "TEXTO" ->
+                texto = req.getParameter("texto");
+            case "TEXTO E IMAGEN" -> {
+                texto = req.getParameter("texto");
                 Archivo archivo = new Archivo();
-                file = archivo.inputStreamToFile(inputStream);
-            } else {
-                String error = "No se ha seleccionado un archivo para el anuncio.";
-                req.setAttribute("error", error);
-                req.getRequestDispatcher("/compra_anuncio/ArchivoAnuncio.jsp").forward(req, resp);
+                file = archivo.inputStreamToFile(extraerInputStream(req, resp), "imagen", ".png");
+            }
+            case "VIDEO" -> {
+                Archivo archivo = new Archivo();
+                file = archivo.inputStreamToFile(extraerInputStream(req, resp), "video", ".mp4");
             }
         }
 
         creadorAnuncio.crearAnuncio(anuncio, file, texto);
         req.getRequestDispatcher("/compra_anuncio/CompraAnuncioCompletado.jsp").forward(req, resp);
+    }
+
+    private InputStream extraerInputStream(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Part filepart = req.getPart("archivo");
+        InputStream inputStream = null;
+
+        if (filepart != null) {
+            inputStream = filepart.getInputStream();
+        } else {
+            lanzarError(req, resp);
+        }
+
+        return inputStream;
+    }
+
+    private void lanzarError(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String error = "No se ha seleccionado un archivo para el anuncio.";
+        req.setAttribute("error", error);
+        req.getRequestDispatcher("/compra_anuncio/ArchivoAnuncio.jsp").forward(req, resp);
     }
 }

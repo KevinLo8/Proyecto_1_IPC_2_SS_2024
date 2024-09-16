@@ -2,29 +2,35 @@ package com.main.codigo_fuente.app.backend.database;
 
 import java.sql.*;
 
-import com.main.codigo_fuente.app.backend.anuncio.Anuncio;
+public class ClaseDBCategorias extends ConectionDB {
 
-public class ClaseDBAnuncio extends ConectionDB {
-
-    public ClaseDBAnuncio() {
+    public ClaseDBCategorias() {
         super();
     }
-    
-    public ResultSet selectAnuncio(int id) {
-        String select = "SELECT * FROM anuncio WHERE id = '" + id + "';";
+
+    public ResultSet selectRevistasCategoria(String categoria) {
+        String select = "SELECT * FROM categoria_revista WHERE categoria = '" + categoria + "';";
+        ResultSet resultSet = selectData(select);
+
+        return resultSet;
+    }
+    public void insertCategoriaRevista(String nombreRevista, String categoria) {
+        String insert = "INSERT INTO categoria_revista (categoria, nombre_revista) "
+                + "values('" + categoria + "','" + nombreRevista + "');";
+
+        insertData(insert);
+    }
+
+    public ResultSet selectCategorias() {
+        String select = "SELECT * FROM categorias;";
         ResultSet resultSet = selectData(select);
 
         return resultSet;
     }
 
-    public void insertAnuncio(Anuncio anuncio) {
-        String insert = "INSERT INTO anuncio (id, usuario_comprador, tipo_anuncio, duracion_anuncio, fecha_activación, data_anuncio, texto, anuncio) "
-                + "values('" + anuncio.getId() + "','" + anuncio.getUsuarioComprador() + "','"
-                + anuncio.getTipoAnuncio() + "','" + anuncio.getDuracionAnuncio() + "','"
-                + anuncio.getFechaActivacion().toString() + "','" + anuncio.getDataAnuncio() + "','"
-                + anuncio.getTextoAnuncio() + "');";
+    public void insertCategoria(String categoria) {
+        String insert = "INSERT INTO categorias (categoria) values('" + categoria + "');";
 
         insertData(insert);
     }
 }
-
