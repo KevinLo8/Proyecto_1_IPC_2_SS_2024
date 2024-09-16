@@ -30,7 +30,7 @@
                             <div class="col-12">
                                 <label for="username" class="form-label">Nombre de usuario</label>
                                 <div class="input-group has-validation">
-                                    <input type="text" class="form-control" id="username" placeholder="Nombre de usuario" name="usuario" minlength="1" maxlength="100">
+                                    <input type="text" class="form-control" value="${param.usuario}" placeholder="Nombre de usuario" name="usuario" minlength="1" maxlength="100" required>
                                     <div class="invalid-feedback">
                                         se requiere un nombre de usuario.
                                     </div>
@@ -39,18 +39,35 @@
 
                             <div class="col-12">
                                 <label>Seleccione el tipo de cuenta que quiere crear</label>
-                                <select class="form-select" name="tipo">
-                                    <option selected>----Seleccione el tipo----</option>
-                                    <option value="ADMINISTRADOR">Administrador</option>
-                                    <option value="COMPRADOR">Comprador</option>
-                                    <option value="EDITOR">Editor</option>
-                                    <option value="SUSCRIPTOR">Suscriptor</option>
-                                </select>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="tipo" value="ADMINISTRADOR" id="CheckRadio">
+                                    <label class="form-check-label" for="CheckRadio">
+                                        Administrador
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="tipo" value="COMPRADOR" id="CheckRadio">
+                                    <label class="form-check-label" for="CheckRadio">
+                                        Comprador
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="tipo" value="EDITOR" id="CheckRadio">
+                                    <label class="form-check-label" for="CheckRadio">
+                                        Editor
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="tipo" value="SUSCRIPTOR" id="CheckRadio">
+                                    <label class="form-check-label" for="CheckRadio">
+                                        Suscriptor
+                                    </label>
+                                </div>
                             </div>
 
                             <div class="col-12">
                                 <label for="password" class="form-label">Contraseña</label>
-                                <input type="password" class="form-control" id="password" placeholder="Contraseña" name="contraseña" minlength="1" maxlength="100">
+                                <input type="password" class="form-control" placeholder="Contraseña" name="contraseña" minlength="1" maxlength="100" required>
                                 <div class="invalid-feedback">
                                     se requiere una contraseña.
                                 </div>

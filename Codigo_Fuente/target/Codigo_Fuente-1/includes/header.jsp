@@ -59,7 +59,7 @@
                                 break;
                             case "EDITOR":
                         %>
-                    <li><a class="dropdown-item" href="#">Publicar Revista</a></li>
+                    <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/publicar-revista/generar-publicacion-servlet">Publicar Revista</a></li>
                     <li><a class="dropdown-item" href="#">Editar Revistas</a></li>
                     <li><a class="dropdown-item" href="#">Ver Reportes</a></li>
                         <%

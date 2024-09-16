@@ -21,37 +21,32 @@
                 <form method="POST" action="${pageContext.servletContext.contextPath}/compra_anuncio/Guardar-Anuncio-servlet" enctype="multipart/form-data">
                     <%
                         Anuncio anuncio = (Anuncio) request.getAttribute("anuncio");
-                        switch (anuncio.getTipoAnuncio()) {
-                            case "TEXTO":
-                    %>
-                    <div class="mb-3">
-                        <label for=" sampleInpuUserName" class="form-label">Escriba el texto para el anuncio</label>
-                        <input type="text" class="form-control" name="texto" minlength="1" maxlength="100">
-                    </div>
-                    <%
-                            break;
-                        case "TEXTO E IMAGEN":
-                    %>
-                    <div class="mb-3">
-                        <label for=" sampleInpuUserName" class="form-label">Escriba el texto para el anuncio</label>
-                        <input type="text" class="form-control" name="texto" minlength="1" maxlength="100">
-                    </div>
 
-                    <div class="mb-3">
-                        <label for=" sampleInpuUserName" class="form-label">Seleccione la imagen para el anuncio</label>
-                        <input type="file" class="form-control" name="archivo">
-                    </div>
-                    <%
-                            break;
-                        case "VIDEO":
+                        if (anuncio.getTipoAnuncio().equals("TEXTO") || anuncio.getTipoAnuncio().equals("TEXTO E IMAGEN")) {
                     %>
                     <div class="mb-3">
-                        <label for=" sampleInpuUserName" class="form-label">Seleccione el video para el anuncio</label>
-                        <input type="file" class="form-control" name="archivo">
+                        <label for=" sampleInpuUserName" class="form-label">Escriba el texto para el anuncio</label>
+                        <input type="text" class="form-control" name="texto" minlength="1" maxlength="100" required>
                     </div>
                     <%
-                                break;
                         }
+                        if (anuncio.getTipoAnuncio().equals("TEXTO E IMAGEN") || anuncio.getTipoAnuncio().equals("VIDEO")) {
+                    %>
+                    <div class="mb-3">
+                        <%
+                            if (anuncio.getTipoAnuncio().equals("TEXTO E IMAGEN")) {
+                        %>
+                        <label for=" sampleInpuUserName" class="form-label">Seleccione la imagen para el anuncio</label>
+                        <%
+                        } else if (anuncio.getTipoAnuncio().equals("VIDEO")) {
+                        %>
+                        <label for=" sampleInpuUserName" class="form-label">Seleccione el video para el anuncio</label>
+                        <%
+                            }
+                        %>
+                        <input type="file" class="form-control" name="archivo" required>
+                    </div>
+                    <%                        }
                     %>
                     <button method="POST" class="btn btn-primary">Crear Anuncio</button>
 

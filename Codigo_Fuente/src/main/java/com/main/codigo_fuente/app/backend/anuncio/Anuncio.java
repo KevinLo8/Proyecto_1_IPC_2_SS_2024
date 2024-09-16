@@ -2,10 +2,7 @@ package com.main.codigo_fuente.app.backend.anuncio;
 
 import jakarta.servlet.http.HttpServletRequest;
 import java.io.File;
-import java.sql.SQLException;
 import java.time.LocalDate;
-
-import com.main.codigo_fuente.app.backend.database.ClaseDBAnuncio;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -60,15 +57,7 @@ public class Anuncio {
         fechaActivacion = LocalDate.parse(req.getParameter("fecha_activacion"));
     }
 
-    public void completarReq(ClaseDBAnuncio db, File dataAnuncio, String textoAnuncio) {
-        id = 1;
-        try {
-            while (db.selectAnuncio(id).next()) {
-                id++;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public void completarReq(File dataAnuncio, String textoAnuncio) {
         this.dataAnuncio = dataAnuncio;
         this.textoAnuncio = textoAnuncio;
     }
