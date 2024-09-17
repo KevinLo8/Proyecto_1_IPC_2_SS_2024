@@ -7,6 +7,7 @@ package com.main.codigo_fuente.app.controllers.compra_anuncio;
 import com.main.codigo_fuente.app.backend.anuncio.Anuncio;
 import com.main.codigo_fuente.app.backend.anuncio.CreadorAnuncio;
 import com.main.codigo_fuente.app.backend.archivo.Archivo;
+import com.main.codigo_fuente.app.backend.exceptions.DataErrorException;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -23,39 +24,29 @@ public class ControladorGuardadoAnuncio extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Anuncio anuncio = (Anuncio) req.getAttribute("anuncio");
-        File file = null;
+        InputStream file = null;
         String texto = null;
         CreadorAnuncio creadorAnuncio = new CreadorAnuncio();
 
-        switch (anuncio.getTipoAnuncio()) {
-            case "TEXTO" ->
-                texto = req.getParameter("texto");
-            case "TEXTO E IMAGEN" -> {
-                texto = req.getParameter("texto");
-                Archivo archivo = new Archivo();
-                file = archivo.inputStreamToFile(extraerInputStream(req, resp), "imagen", ".png");
+        try {
+            switch (anuncio.getTipoAnuncio()) {
+                case "TEXTO" ->
+                    texto = req.getParameter("texto");
+                case "TEXTO E IMAGEN" -> {
+                    texto = req.getParameter("texto");
+                    Archivo archivo = new Archivo();
+                    file = archivo.extraerInputStream(req, "archivo");
+                }
+                case "VIDEO" -> {
+                    Archivo archivo = new Archivo();
+                    file = archivo.extraerInputStream(req, "archivo");
+                }
             }
-            case "VIDEO" -> {
-                Archivo archivo = new Archivo();
-                file = archivo.inputStreamToFile(extraerInputStream(req, resp), "video", ".mp4");
-            }
-        }
-
-        creadorAnuncio.crearAnuncio(anuncio, file, texto);
-        req.getRequestDispatcher("/compra_anuncio/CompraAnuncioCompletado.jsp").forward(req, resp);
-    }
-
-    private InputStream extraerInputStream(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Part filepart = req.getPart("archivo");
-        InputStream inputStream = null;
-
-        if (filepart != null) {
-            inputStream = filepart.getInputStream();
-        } else {
+        } catch (DataErrorException ex) {
             lanzarError(req, resp);
         }
-
-        return inputStream;
+        creadorAnuncio.crearAnuncio(anuncio, file, texto);
+        req.getRequestDispatcher("/compra_anuncio/CompraAnuncioCompletado.jsp").forward(req, resp);
     }
 
     private void lanzarError(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

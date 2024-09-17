@@ -26,7 +26,7 @@ public class ControladorCompraAnuncio extends HttpServlet {
         ClaseDBPreciosAnuncios db = new ClaseDBPreciosAnuncios();
         ResultSet resultSet = db.selectPrecios();
 
-        preciosAnuncios.crear(resultSet);
+        preciosAnuncios.crearRes(resultSet);
 
         if (preciosAnuncios.sonInvalidos()) {
             resp.sendRedirect(req.getContextPath() + "/compra_anuncio/AnunciosSinPrecios.jsp");

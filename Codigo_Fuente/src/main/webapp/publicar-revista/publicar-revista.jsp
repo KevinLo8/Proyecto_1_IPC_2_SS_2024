@@ -4,6 +4,8 @@
     Author     : kevin
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -30,66 +32,48 @@
                     </div>
 
                     <div class="mb-3">
-                        <%
-                            String[] tags = (String[]) request.getAttribute("tags");
-
-                            if (tags.length == 0) {
-                        %>
-                        <label class="form-label">No hay ningun tag disponible, por favor agregar alguno con el boton de abajo.</label>
-                        <%
-                        } else {
-                            for (int i = 0; i < tags.length; i++) {
-                                request.setAttribute("tag", tags[i]);
-                        %>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="${tag}" name="tagsSelect" id="flexCheckChecked">
-                            <label class="form-check-label">
-                                ${tag}
-                            </label>
-                        </div>
-                        <%
-                                }
-                            }
-                        %>
+                        <c:choose>
+                            <c:when test="${fn:length(tags) == 0}">
+                                <label class="form-label">No hay ningun tag disponible, por favor agregar alguno con el boton de abajo.</label>
+                            </c:when>
+                            <c:otherwise>
+                                <c:forEach items="${tags}" var="tag">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="${tag}" name="tagsSelect" id="flexCheckChecked">
+                                        <label class="form-check-label">${tag}</label>
+                                    </div>
+                                </c:forEach>
+                            </c:otherwise>
+                        </c:choose>   
                     </div>
 
                     <div class="mb-3">
-                        <a href="${pageContext.servletContext.contextPath}/agregar-tag/agregar-nuevo-tag-servlet" class="btn btn-primary" role="button">Agregar Nuevo Tag</a>
+                        <a href="${pageContext.servletContext.contextPath}/agregar-tag/agregar-nuevo-tag-servlet" class="btn btn-secondary" role="button">Agregar Nuevo Tag</a>
                     </div>      
 
                     <div class="mb-3">
-                        <%
-                            String[] categorias = (String[]) request.getAttribute("categorias");
-
-                            if (categorias.length == 0) {
-                        %>
-                        <label class="form-label">No hay ninguna categoria disponible, por favor agregar alguna con el boton de abajo.</label>
-                        <%
-                        } else {
-                            for (int i = 0; i < categorias.length; i++) {
-                                request.setAttribute("categoria", categorias[i]);
-                        %>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" value="${categoria}" name="categoriaSelect">
-                            <label class="form-check-label">
-                                ${categoria}
-                            </label>
-                        </div>
-                        <%
-                                }
-                            }
-                        %>
+                        <c:choose>
+                            <c:when test="${fn:length(categorias) == 0}">
+                                <label class="form-label">No hay ninguna categoria disponible, por favor agregar alguna con el boton de abajo.</label>
+                            </c:when>
+                            <c:otherwise>
+                                <c:forEach items="${categorias}" var="categoria">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" value="${categoria}" name="categoriaSelect">
+                                        <label class="form-check-label">${categoria}</label>
+                                    </div>
+                                </c:forEach>
+                            </c:otherwise>
+                        </c:choose>   
                     </div>
 
                     <div class="mb-3">
-                        <a href="${pageContext.servletContext.contextPath}/agregar-categoria/agregar-nuevo-categoria-servlet" class="btn btn-primary" role="button">Agregar Nueva Categoria</a>
+                        <a href="${pageContext.servletContext.contextPath}/agregar-categoria/agregar-nuevo-categoria-servlet" class="btn btn-secondary" role="button">Agregar Nueva Categoria</a>
                     </div>      
 
                     <button method="POST" class="btn btn-primary">Publicar Revista</button>
 
-                    <div class="mb-3 mt-3">
-                        <h1>${error}</h1>
-                    </div>
+                    <p class="text-center fs-2 text-danger mb-5 mt-5">${error}</p>
 
                 </form>        
             </div>

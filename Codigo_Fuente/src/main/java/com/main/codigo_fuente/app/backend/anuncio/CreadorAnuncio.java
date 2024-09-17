@@ -8,7 +8,7 @@ public class CreadorAnuncio {
 
     private final ClaseDBAnuncio db = new ClaseDBAnuncio();
 
-    public void crearAnuncio(Anuncio anuncio, File data, String texto) {
+    public void crearAnuncio(Anuncio anuncio, InputStream data, String texto) {
 
         anuncio.completarReq(data, texto);
 

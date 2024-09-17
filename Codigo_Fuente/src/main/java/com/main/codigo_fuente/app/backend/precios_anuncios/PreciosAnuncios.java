@@ -4,8 +4,9 @@
  */
 package com.main.codigo_fuente.app.backend.precios_anuncios;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import com.main.codigo_fuente.app.backend.exceptions.*;
+import jakarta.servlet.http.HttpServletRequest;
+import java.sql.*;
 
 /**
  *
@@ -13,52 +14,68 @@ import java.sql.SQLException;
  */
 public class PreciosAnuncios {
 
-    private int precioTexto = 0;
-    private int precioTextoEImagen = 0;
-    private int precioVideo = 0;
-    private int precio1Dia = 0;
-    private int precio3Dias = 0;
-    private int precio1Semana = 0;
-    private int precio2Semanas = 0;
+    private float precioTexto = 0;
+    private float precioTextoEImagen = 0;
+    private float precioVideo = 0;
+    private float precio1Dia = 0;
+    private float precio3Dias = 0;
+    private float precio1Semana = 0;
+    private float precio2Semanas = 0;
 
-    public int getPrecioTexto() {
+    public Float getPrecioTexto() {
         return precioTexto;
     }
 
-    public int getPrecioTextoEImagen() {
+    public Float getPrecioTextoEImagen() {
         return precioTextoEImagen;
     }
 
-    public int getPrecioVideo() {
+    public Float getPrecioVideo() {
         return precioVideo;
     }
 
-    public int getPrecio1Dia() {
+    public Float getPrecio1Dia() {
         return precio1Dia;
     }
 
-    public int getPrecio3Dias() {
+    public Float getPrecio3Dias() {
         return precio3Dias;
     }
 
-    public int getPrecio1Semana() {
+    public Float getPrecio1Semana() {
         return precio1Semana;
     }
 
-    public int getPrecio2Semanas() {
+    public Float getPrecio2Semanas() {
         return precio2Semanas;
     }
 
-    public void crear(ResultSet resultSet) {
+    public void crearReq(HttpServletRequest req) throws DataErrorException, DataEmptyException {
+        try {
+            precioTexto = Float.parseFloat(req.getParameter("precioTexto"));
+            precioTextoEImagen = Float.parseFloat(req.getParameter("precioTextoEImagen"));
+            precioVideo = Float.parseFloat(req.getParameter("precioVideo"));
+            precio1Dia = Float.parseFloat(req.getParameter("precio1Dia"));
+            precio3Dias = Float.parseFloat(req.getParameter("precio3Dias"));
+            precio1Semana = Float.parseFloat(req.getParameter("precio1Semana"));
+            precio2Semanas = Float.parseFloat(req.getParameter("precio2Semanas"));
+        } catch (NumberFormatException ex) {
+            throw new DataErrorException();
+        } catch (NullPointerException ex) {
+            throw new DataEmptyException();
+        }
+    }
+
+    public void crearRes(ResultSet resultSet) {
         try {
             while (resultSet.next()) {
-                precioTexto = resultSet.getInt("precio_texto");
-                precioTextoEImagen = resultSet.getInt("precio_texto_e_imagen");
-                precioVideo = resultSet.getInt("precio_video");
-                precio1Dia = resultSet.getInt("precio_1_dia");
-                precio3Dias = resultSet.getInt("precio_3_dias");
-                precio1Semana = resultSet.getInt("precio_1_semana");
-                precio2Semanas = resultSet.getInt("precio_2_semanas");
+                precioTexto = resultSet.getFloat("precio_texto");
+                precioTextoEImagen = resultSet.getFloat("precio_texto_e_imagen");
+                precioVideo = resultSet.getFloat("precio_video");
+                precio1Dia = resultSet.getFloat("precio_1_dia");
+                precio3Dias = resultSet.getFloat("precio_3_dias");
+                precio1Semana = resultSet.getFloat("precio_1_semana");
+                precio2Semanas = resultSet.getFloat("precio_2_semanas");
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -66,19 +83,19 @@ public class PreciosAnuncios {
     }
 
     public boolean sonInvalidos() {
-        if (precioTexto == 0) {
+        if (precioTexto < 1) {
             return true;
-        } else if (precioTextoEImagen == 0) {
+        } else if (precioTextoEImagen < 1) {
             return true;
-        } else if (precioVideo == 0) {
+        } else if (precioVideo < 1) {
             return true;
-        } else if (precio1Dia == 0) {
+        } else if (precio1Dia < 1) {
             return true;
-        } else if (precio3Dias == 0) {
+        } else if (precio3Dias < 1) {
             return true;
-        } else if (precio1Semana == 0) {
+        } else if (precio1Semana < 1) {
             return true;
-        } else if (precio2Semanas == 0) {
+        } else if (precio2Semanas < 1) {
             return true;
         } else {
             return false;
