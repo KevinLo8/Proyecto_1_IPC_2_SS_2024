@@ -44,9 +44,8 @@
                             switch (usuario.getTipoUsuario().toString()) {
                                 case "ADMINISTRADOR":
                         %>
-                    <li><a class="dropdown-item" href="#">Editar Precios de Anuncios</a></li>
-                    <li><a class="dropdown-item" href="#">Revisar Revistas</a></li>
-                    <li><a class="dropdown-item" href="#">Editar Precios de Revistas</a></li>
+                    <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/precios-anuncios/crear-edicion-precios-servlet">Editar Precios de Anuncios</a></li>
+                    <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/precios-revistas/crear-edicion-revista-servlet">Editar Precios de Revistas</a></li>
                     <li><a class="dropdown-item" href="#">Ver Reportes</a></li>
                         <%
                                 break;
@@ -54,7 +53,7 @@
                         %>
                     <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/compra_anuncio/Compra-Anuncio-servlet">Comprar Anuncio</a></li>
                     <li><a class="dropdown-item" href="#">Ver Anuncios Comprados</a></li>
-                    <li><a class="dropdown-item" href="#">Acrerditar Dinero</a></li>
+                    <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/acreditar-dinero/acreditar-dinero.jsp">Acrerditar Dinero</a></li>
                         <%
                                 break;
                             case "EDITOR":
@@ -67,7 +66,7 @@
                             case "SUSCRIPTOR":
                         %>
                     <li><a class="dropdown-item" href="#">Buscardor de Revistas</a></li>
-                    <li><a class="dropdown-item" href="#">Acrerditar Dinero</a></li>
+                    <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/acreditar-dinero/acreditar-dinero-servlet">Acrerditar Dinero</a></li>
                         <%
                                     break;
                             }

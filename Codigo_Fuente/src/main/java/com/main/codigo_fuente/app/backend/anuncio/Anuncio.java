@@ -2,6 +2,7 @@ package com.main.codigo_fuente.app.backend.anuncio;
 
 import jakarta.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.io.InputStream;
 import java.time.LocalDate;
 
 /*
@@ -19,7 +20,7 @@ public class Anuncio {
     private String tipoAnuncio;
     private String duracionAnuncio;
     private LocalDate fechaActivacion;
-    private File dataAnuncio;
+    private InputStream dataAnuncio;
     private String textoAnuncio;
 
     public int getId() {
@@ -42,7 +43,7 @@ public class Anuncio {
         return fechaActivacion;
     }
 
-    public File getDataAnuncio() {
+    public InputStream getDataAnuncio() {
         return dataAnuncio;
     }
 
@@ -57,7 +58,7 @@ public class Anuncio {
         fechaActivacion = LocalDate.parse(req.getParameter("fecha_activacion"));
     }
 
-    public void completarReq(File dataAnuncio, String textoAnuncio) {
+    public void completarReq(InputStream dataAnuncio, String textoAnuncio) {
         this.dataAnuncio = dataAnuncio;
         this.textoAnuncio = textoAnuncio;
     }

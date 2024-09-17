@@ -9,6 +9,7 @@ import com.main.codigo_fuente.app.backend.exceptions.DataErrorException;
 import com.main.codigo_fuente.app.backend.revista.Revista;
 import com.main.codigo_fuente.app.backend.tags.Tag;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import java.io.IOException;
@@ -18,6 +19,7 @@ import java.io.IOException;
  * @author kevin
  */
 @WebServlet(name = "ControladorPublicarRevista", urlPatterns = {"/publicar-revista/publicar-revista-servlet"})
+@MultipartConfig(location = "/tmp")
 public class ControladorPublicarRevista extends HttpServlet {
 
     @Override
