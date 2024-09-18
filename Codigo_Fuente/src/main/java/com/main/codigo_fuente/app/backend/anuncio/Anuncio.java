@@ -1,7 +1,6 @@
 package com.main.codigo_fuente.app.backend.anuncio;
 
 import jakarta.servlet.http.HttpServletRequest;
-import java.io.File;
 import java.io.InputStream;
 import java.time.LocalDate;
 

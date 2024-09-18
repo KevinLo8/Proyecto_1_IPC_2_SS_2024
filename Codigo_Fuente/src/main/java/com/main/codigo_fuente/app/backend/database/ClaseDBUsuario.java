@@ -42,4 +42,11 @@ public class ClaseDBUsuario extends ConectionDB {
 
         insertData(insert);
     }
+    
+        public void updateCreditoUsuario(String nombreUsuario, Double credito) {
+        String update = "UPDATE usuario SET credito = '" + credito + "' WHERE nombre_usuario = '" + nombreUsuario + "';";
+        
+        insertData(update);
+    }
+
 }
