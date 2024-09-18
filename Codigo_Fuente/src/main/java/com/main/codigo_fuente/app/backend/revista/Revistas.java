@@ -5,8 +5,6 @@
 package com.main.codigo_fuente.app.backend.revista;
 
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *

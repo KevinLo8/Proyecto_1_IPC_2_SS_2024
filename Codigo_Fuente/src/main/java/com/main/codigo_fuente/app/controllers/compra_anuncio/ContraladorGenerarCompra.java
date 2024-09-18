@@ -25,7 +25,7 @@ public class ContraladorGenerarCompra extends HttpServlet {
                         String error = "No se a seleccionado un tipo o una duracion de anuncio,.";
             req.setAttribute("error", error);
             req.getRequestDispatcher("/compra_anuncio/CompraAnuncio.jsp").forward(req, resp);
-        } else if (usuario.saldoSuficiente(Integer.parseInt(req.getParameter("costo")))) {
+        } else if (usuario.saldoSuficiente(Double.valueOf(req.getParameter("costo")))) {
             Anuncio anuncio = new Anuncio();
             anuncio.crearReq(req, usuario.getNombreUsuario());
             resp.sendRedirect(req.getContextPath() + "/compra_anuncio/ArchivoAnuncio.jsp?anuncio=" + anuncio);

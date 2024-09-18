@@ -26,15 +26,15 @@
                     </div>
                     <div class="form-group text-start mt-3">
                         <label for="usuarioRevista">Tipo de usuario</label>
-                        <input type="text" class="form-control" value="${sessionScope.usuario.tipoUsuario.name}" disabled/>
-                        <input type="hidden" class="form-control" name="tipoUsuario" value="${sessionScope.usuario.tipoUsuario.name}"/>
+                        <input type="text" class="form-control" value="${sessionScope.usuario.tipoUsuario}" disabled/>
+                        <input type="hidden" class="form-control" name="tipoUsuario" value="${sessionScope.usuario.tipoUsuario}"/>
                     </div>
                     <div class="form-group text-start mt-3">
                         <label for="precio">Credito del usuario</label>
                         <div class="input-group">
                             <span class="input-group-text">Q </span>
                             <input id="precio" type="number" min="0.01" step="0.01" 
-                                   class="form-control" on value="${revista.precioRevista}" disabled/>
+                                   class="form-control" on value="${sessionScope.usuario.credito}" disabled/>
                         </div>
                     </div>
 
@@ -42,11 +42,11 @@
                         <label for="precio">Cuanto credito quiere agregar</label>
                         <div class="input-group">
                             <span class="input-group-text">Q </span>
-                            <input id="precio" name="precio" type="number" min="0.01" step="0.01" 
+                            <input id="cantidad" name="cantidad" type="number" min="0.01" step="0.01" 
                                    class="form-control" value="0.00"/>
                         </div>
                     </div>
-                    <button class="btn btn-success mt-3">Guardar solicitud</button>
+                    <button class="btn btn-success mt-3">Acreditar Dinero</button>
                 </form>
             </div>
         </div>
@@ -55,8 +55,8 @@
 </html>
 
 <script type="text/javascript">
-    $("#precio").on("keypress", function () {
-        $("#precio").change(function () {
+    $("#cantidad").on("keypress", function () {
+        $("#cantidad").change(function () {
             $(this).val(parseFloat($(this).val()).toFixed(2));
         });
     });
