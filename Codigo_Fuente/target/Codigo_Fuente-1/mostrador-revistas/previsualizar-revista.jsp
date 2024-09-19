@@ -29,7 +29,7 @@
                     </div>
                     <div class="form-group text-start mt-3">
                         <label for="descripción"">Descripción</label>
-                        <textarea class="form-control" name="descripción" placeholder="${revista.descripcion}" rows="4" disabled></textarea>
+                        <textarea class="form-control" name="descripción" rows="4" disabled>${revista.descripcion}</textarea>
                     </div>
 
                     <div class="form-group text-start mt-3">

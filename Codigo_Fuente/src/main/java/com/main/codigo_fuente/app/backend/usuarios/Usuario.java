@@ -14,6 +14,10 @@ public class Usuario {
     private String contraseñaUsuario;
     private TipoUsuarioEnum tipoUsuario;
     private Double credito;
+    private String hobbies;
+    private String temasInteres;
+    private String descripcion;
+    private String gustos;
 
     public String getNombreUsuario() {
         return nombreUsuario;
@@ -33,6 +37,22 @@ public class Usuario {
 
     public Double getCredito() {
         return credito;
+    }
+
+    public String getHobbies() {
+        return hobbies;
+    }
+
+    public String getTemasInteres() {
+        return temasInteres;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public String getGustos() {
+        return gustos;
     }
 
     public void crearReq(HttpServletRequest req) {
@@ -62,7 +82,7 @@ public class Usuario {
 
         db.updateCreditoUsuario(nombreUsuario, credito);
     }
-    
+
     public void restarSaldo(Double cantidad, ClaseDBUsuario db) {
         credito = credito - cantidad;
 
@@ -71,5 +91,18 @@ public class Usuario {
         credito = bd.doubleValue();
 
         db.updateCreditoUsuario(nombreUsuario, credito);
+    }
+
+    public void copiarInfo(HttpServletRequest req) {
+        hobbies = req.getParameter("hobbies");
+        temasInteres = req.getParameter("temasInteres");
+        descripcion = req.getParameter("descripción");
+        gustos = req.getParameter("gustos");
+    }
+    
+    public void guardarInfo() {
+        ClaseDBUsuario db = new ClaseDBUsuario();
+        db.updateInfoUsuario(this);
+        db.cerrarDB();
     }
 }
