@@ -30,7 +30,11 @@
                     </div>
                     <div class="form-group text-start mt-3">
                         <label for="usuarioRevista">Credito disponible</label>
-                        <input type="number" class="form-control" value="${sessionScope.usuario.credito}" disabled/>
+                        <div class="input-group">
+                            <span class="input-group-text">Q </span>
+                            <input id="precio" type="number" min="0.01" step="0.01" 
+                                   class="form-control" on value="${sessionScope.usuario.credito}" disabled/>
+                        </div>
                     </div>
                     <div class="form-group text-start mt-3">
                         <label for="descripción"">Hobbies</label>

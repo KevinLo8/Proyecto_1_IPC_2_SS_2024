@@ -16,6 +16,7 @@ com/main/codigo_fuente/app/backend/suscripcion/Suscripcion.class
 com/main/codigo_fuente/app/backend/database/ClaseDBSuscripcion.class
 com/main/codigo_fuente/app/controllers/agregar_tag/ControladorCrearAgregarTag.class
 com/main/codigo_fuente/app/controllers/publicar_revista/ControladorPublicarRevista.class
+com/main/codigo_fuente/app/controllers/revista_me_gusta/ControladorMeGusta.class
 com/main/codigo_fuente/app/backend/database/ClaseDBPreciosAnuncios.class
 com/main/codigo_fuente/app/backend/database/ClaseDBCategorias.class
 com/main/codigo_fuente/app/backend/categoria/Categoria.class
