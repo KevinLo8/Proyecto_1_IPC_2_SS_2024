@@ -25,6 +25,15 @@ public class Tag {
         return tags;
     }
 
+    public String[] pedirTagsRevista(String nombreRevista) {
+        ClaseDBTags db = new ClaseDBTags();
+        ResultSet resultSet = db.selectTagsRevista(nombreRevista);
+        String[] tags = separarTags(resultSet);
+        db.cerrarDB();
+
+        return tags;
+    }
+
     private String[] separarTags(ResultSet resultSet) {
         String[] tagsOut = new String[0];
 

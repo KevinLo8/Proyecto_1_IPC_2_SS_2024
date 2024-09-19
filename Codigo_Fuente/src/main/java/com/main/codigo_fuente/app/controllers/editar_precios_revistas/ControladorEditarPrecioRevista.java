@@ -24,7 +24,7 @@ public class ControladorEditarPrecioRevista extends HttpServlet {
         ClaseDBRevista db = new ClaseDBRevista();
         Revista revista = new Revista();
         try {
-            ResultSet resultSet = db.selectRevista(req.getParameter("nombre"));
+            ResultSet resultSet = db.selectRevista(req.getParameter("nombreRevista"));
             resultSet.next();
             revista.crearRes(resultSet);
         } catch (SQLException ex) {

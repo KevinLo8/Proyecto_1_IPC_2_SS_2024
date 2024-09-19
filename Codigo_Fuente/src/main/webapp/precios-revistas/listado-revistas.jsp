@@ -17,9 +17,9 @@
         <jsp:include page="../includes/header.jsp"/>
         <div class="container my-5">
             <h1 class="text-body-emphasis">Listado de Revistas.</h1>
-            
-            <div class="container">
-                <c:forEach items="${revistas}" var="revista">
+
+            <c:forEach items="${revistas}" var="revista">
+                <div class="container my-3">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">${revista.nombreRevista}</h5>
@@ -29,8 +29,8 @@
                                class="card-link">editar precio</a>
                         </div>
                     </div>
-                </c:forEach>
-            </div>
+                </div>
+            </c:forEach>
         </div>
         <jsp:include page="../includes/footer.jsp"/>
     </body>

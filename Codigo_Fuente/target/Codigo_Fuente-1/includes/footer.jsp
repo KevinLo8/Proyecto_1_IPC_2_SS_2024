@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<div class="container">
+<div class="container" style="background-color: black">
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
         <p class="col-md-4 mb-0 text-body-secondary">© 2024 Company, Inc</p>
 
@@ -14,7 +14,8 @@
         </a>
 
         <ul class="nav col-md-4 justify-content-end">
-            <li class="nav-item"><a href="${pageContext.servletContext.contextPath}/index.jsp" class="nav-link px-2 text-body-secondary">Home</a></li>
+            <li class="nav-item"><a href="${pageContext.servletContext.contextPath}/index.jsp" class="nav-link px-2 text-info">Inicio</a></li>
+            <li class="nav-item"><a href="${pageContext.servletContext.contextPath}/mostrador-revistas/mostrador-revistas-servlet" class="nav-link px-2 text-info">Revistas</a></li>
         </ul>
     </footer>
 </div>

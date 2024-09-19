@@ -24,6 +24,15 @@ public class Categoria {
         return categorias;
     }
 
+    public String pedirCategoriaRevista(String nombreRevista) {
+        ClaseDBCategorias db = new ClaseDBCategorias();
+        ResultSet resultSet = db.selectCategoriaRevistas(nombreRevista);
+        String[] categorias = separarCategorias(resultSet);
+        db.cerrarDB();
+
+        return categorias[0];
+    }
+
     private String[] separarCategorias(ResultSet resultSet) {
         String[] categoriasOut = new String[0];
 

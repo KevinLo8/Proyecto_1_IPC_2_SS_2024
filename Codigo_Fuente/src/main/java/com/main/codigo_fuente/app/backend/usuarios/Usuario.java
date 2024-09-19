@@ -52,14 +52,14 @@ public class Usuario {
     public boolean saldoSuficiente(Double costo) {
         return credito > costo;
     }
-    
+
     public void acreditarSaldo(Double cantidad, ClaseDBUsuario db) {
         credito = credito + cantidad;
-        
+
         BigDecimal bd = new BigDecimal(credito);
         bd.setScale(2, RoundingMode.CEILING);
         credito = bd.doubleValue();
-        
+
         db.updateCreditoUsuario(nombreUsuario, credito);
     }
 }

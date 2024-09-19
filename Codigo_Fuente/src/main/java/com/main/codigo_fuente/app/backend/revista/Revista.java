@@ -5,16 +5,16 @@
 package com.main.codigo_fuente.app.backend.revista;
 
 import com.main.codigo_fuente.app.backend.archivo.Archivo;
-import com.main.codigo_fuente.app.backend.database.ClaseDBRevista;
+import com.main.codigo_fuente.app.backend.categoria.Categoria;
+import com.main.codigo_fuente.app.backend.database.*;
 import com.main.codigo_fuente.app.backend.exceptions.DataErrorException;
+import com.main.codigo_fuente.app.backend.tags.Tag;
 import com.main.codigo_fuente.app.backend.usuarios.Usuario;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import java.io.*;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.math.*;
+import java.sql.*;
 
 /**
  *
@@ -24,10 +24,14 @@ public class Revista {
 
     private String nombreRevista;
     private String usuarioPublicador;
+    private String descripcion;
     private InputStream archivoRevista;
     private Double precioRevista;
     private String nombreArchivo;
     private String extencionArchivo;
+    private String[] tags;
+    private String categoria;
+    private Boolean suscrito;
 
     public String getNombreRevista() {
         return nombreRevista;
@@ -35,6 +39,10 @@ public class Revista {
 
     public String getUsuarioPublicador() {
         return usuarioPublicador;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
     }
 
     public InputStream getArchivoRevista() {
@@ -53,12 +61,30 @@ public class Revista {
         return extencionArchivo;
     }
 
+    public String[] getTags() {
+        return tags;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public Boolean getSuscrito() {
+        return suscrito;
+    }
+
     public void setPrecioRevista(HttpServletRequest req) {
         precioRevista = Double.valueOf(req.getParameter("precio"));
     }
 
+    public void setSuscrito(Boolean suscrito) {
+        this.suscrito = suscrito;
+    }
+
     public void crearReq(HttpServletRequest req) throws DataErrorException, ServletException, IOException {
         nombreRevista = req.getParameter("nombre");
+
+        descripcion = req.getParameter("descripción");
 
         Archivo archivo = new Archivo();
         archivoRevista = archivo.extraerInputStream(req, "revista");
@@ -74,6 +100,8 @@ public class Revista {
     public void crearRes(ResultSet res) throws SQLException {
         nombreRevista = res.getString("nombre_revista");
 
+        descripcion = res.getString("descripción");
+
         archivoRevista = res.getBlob("data_revista").getBinaryStream();
         nombreArchivo = res.getString("nombre_archivo");
         extencionArchivo = res.getString("extencion_archivo");
@@ -87,6 +115,8 @@ public class Revista {
 
     public void crearResInfo(ResultSet res) throws SQLException {
         nombreRevista = res.getString("nombre_revista");
+
+        descripcion = res.getString("descripción");
 
         usuarioPublicador = res.getString("usuario_publicador");
 
@@ -105,6 +135,31 @@ public class Revista {
         ClaseDBRevista db = new ClaseDBRevista();
         db.updatePrecioRevista(nombreRevista, precioRevista);
         db.cerrarDB();
+
+    }
+
+    public void guardarInfo() {
+        Tag tag = new Tag();
+        String[] tagsData = tag.pedirTagsRevista(nombreRevista);
+
+        Categoria cat = new Categoria();
+        String categoriaData = cat.pedirCategoriaRevista(nombreRevista);
+
+        tags = tagsData;
+        categoria = categoriaData;
+    }
+
+    public Boolean revisarSuscripcion(String nombreUsuario) {
+        ClaseDBSuscripcion db = new ClaseDBSuscripcion();
+
+        ResultSet res = db.selectSuscripcion(nombreRevista, nombreUsuario);
+
+        try {
+            return res.next();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return false;
 
     }
 
