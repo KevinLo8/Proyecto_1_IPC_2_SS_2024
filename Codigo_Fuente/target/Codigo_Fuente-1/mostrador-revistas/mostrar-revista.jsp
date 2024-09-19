@@ -19,7 +19,8 @@
             <h1 class="text-body-emphasis text-center">${revista.nombreRevista}.</h1>
 
             <div class="container text-end">
-                <a class="btn btn-primary m-1" type="button">Descargar</a>
+                <a href="${pageContext.servletContext.contextPath}/descargar-revista/descargar-revista-servlet?nombreRevista=${revista.nombreRevista}"
+                    class="btn btn-primary m-1" type="button">Descargar</a>
                 <a href="${pageContext.servletContext.contextPath}/mostrador-revistas/mostrador-revistas-servlet"
                    class="btn btn-primary m-1" type="button">Regresar</a>
             </div>

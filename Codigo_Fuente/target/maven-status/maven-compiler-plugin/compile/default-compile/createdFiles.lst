@@ -3,6 +3,7 @@ com/main/codigo_fuente/app/backend/exceptions/DataErrorException.class
 com/main/codigo_fuente/app/backend/tags/Tag.class
 com/main/codigo_fuente/app/controllers/agregar_tag/ControladorCrearAgregarTag.class
 com/main/codigo_fuente/app/controllers/publicar_revista/ControladorPublicarRevista.class
+com/main/codigo_fuente/app/controllers/descargar_archivo/ControladorDecargarRevista.class
 com/main/codigo_fuente/app/backend/database/ClaseDBPreciosAnuncios.class
 com/main/codigo_fuente/app/backend/database/ClaseDBCategorias.class
 com/main/codigo_fuente/app/backend/revista/Revista.class
@@ -11,11 +12,11 @@ com/main/codigo_fuente/app/backend/database/ClaseDBTags.class
 com/main/codigo_fuente/app/backend/categoria/Categoria.class
 com/main/codigo_fuente/app/backend/exceptions/DataEmptyException.class
 com/main/codigo_fuente/app/backend/database/ClaseDBRevista.class
+com/main/codigo_fuente/app/controllers/suscripcion_revista/ControladorSuscripcionRevista.class
 com/main/codigo_fuente/app/backend/suscripcion/Suscripciones.class
 com/main/codigo_fuente/app/controllers/agregar_categoria/ControladorAgregarCategoria.class
 com/main/codigo_fuente/app/backend/precios_anuncios/PreciosAnuncios.class
 com/main/codigo_fuente/app/controllers/editar_precios_revistas/ControladorEditarPrecioRevista.class
-com/main/codigo_fuente/app/controllers/editar_precios_revistas/suscripcion_revista/ControladorSuscripcionRevista.class
 com/main/codigo_fuente/app/controllers/compra_anuncio/ControladorCompraAnuncio.class
 com/main/codigo_fuente/app/controllers/agregar_tag/ControladorAgregarTag.class
 com/main/codigo_fuente/app/backend/revista/Revistas.class
