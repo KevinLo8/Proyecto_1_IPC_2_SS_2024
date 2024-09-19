@@ -20,10 +20,6 @@ import java.sql.ResultSet;
 public class ControllerCrearEdicionRevista extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    }
-
-    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ClaseDBRevista db = new ClaseDBRevista();
         ResultSet resultSet = db.selectRevistas();

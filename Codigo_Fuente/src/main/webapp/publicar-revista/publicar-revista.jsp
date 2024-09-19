@@ -22,49 +22,60 @@
                 <form method="POST" action="${pageContext.servletContext.contextPath}/publicar-revista/publicar-revista-servlet" enctype="multipart/form-data">
 
                     <div class="mb-3">
-                        <label class="form-label">Escriba el nombre para la revista</label>
-                        <input type="text" class="form-control" name="nombre" min="1" max="50" required>
+                        <label class="form-label fs-4">Escriba el nombre para la revista</label>
+                        <input type="text" class="form-control" name="nombre" minlength="1" maxlength="100" required>
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">Seleccione el archivo de la revista que quiere publicar</label>
+                        <label class="form-label fs-4">Escriba una descripción para la revista</label>
+                        <textarea class="form-control" name="descripción" min="1" max="255" rows="4" required></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fs-4">Seleccione el archivo de la revista que quiere publicar</label>
                         <input type="file" class="form-control" name="revista" required>
                     </div>
 
-                    <div class="mb-3">
-                        <c:choose>
-                            <c:when test="${fn:length(tags) == 0}">
-                                <label class="form-label">No hay ningun tag disponible, por favor agregar alguno con el boton de abajo.</label>
-                            </c:when>
-                            <c:otherwise>
-                                <c:forEach items="${tags}" var="tag">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="${tag}" name="tagsSelect" id="flexCheckChecked">
-                                        <label class="form-check-label">${tag}</label>
-                                    </div>
-                                </c:forEach>
-                            </c:otherwise>
-                        </c:choose>   
+                    <div class="form-group my-4">
+                        <label class="form-label fs-4">Seleccione las etiquetas para la revista</label>
+                        <div class="mb-3">
+                            <c:choose>
+                                <c:when test="${fn:length(tags) == 0}">
+                                    <label class="form-label">No hay ningun tag disponible, por favor agregar alguno con el boton de abajo.</label>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:forEach items="${tags}" var="tag">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="${tag}" name="tagsSelect" id="flexCheckChecked">
+                                            <label class="form-check-label">${tag}</label>
+                                        </div>
+                                    </c:forEach>
+                                </c:otherwise>
+                            </c:choose>   
+                        </div>
                     </div>
 
                     <div class="mb-3">
                         <a href="${pageContext.servletContext.contextPath}/agregar-tag/agregar-nuevo-tag-servlet" class="btn btn-secondary" role="button">Agregar Nuevo Tag</a>
                     </div>      
 
-                    <div class="mb-3">
-                        <c:choose>
-                            <c:when test="${fn:length(categorias) == 0}">
-                                <label class="form-label">No hay ninguna categoria disponible, por favor agregar alguna con el boton de abajo.</label>
-                            </c:when>
-                            <c:otherwise>
-                                <c:forEach items="${categorias}" var="categoria">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" value="${categoria}" name="categoriaSelect">
-                                        <label class="form-check-label">${categoria}</label>
-                                    </div>
-                                </c:forEach>
-                            </c:otherwise>
-                        </c:choose>   
+                    <div class="form-group my-4">
+                        <label class="form-label fs-4">Seleccione una categoria para la revista</label>
+                        <div class="mb-3">
+                            <c:choose>
+                                <c:when test="${fn:length(categorias) == 0}">
+                                    <label class="form-label">No hay ninguna categoria disponible, por favor agregar alguna con el boton de abajo.</label>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:forEach items="${categorias}" var="categoria">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" value="${categoria}" name="categoriaSelect">
+                                            <label class="form-check-label">${categoria}</label>
+                                        </div>
+                                    </c:forEach>
+                                </c:otherwise>
+                            </c:choose>   
+                        </div>
                     </div>
 
                     <div class="mb-3">
@@ -74,7 +85,6 @@
                     <button method="POST" class="btn btn-primary">Publicar Revista</button>
 
                     <p class="text-center fs-2 text-danger mb-5 mt-5">${error}</p>
-
                 </form>        
             </div>
         </div>

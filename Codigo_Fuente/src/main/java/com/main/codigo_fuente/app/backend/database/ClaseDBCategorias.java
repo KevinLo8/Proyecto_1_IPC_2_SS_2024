@@ -14,6 +14,14 @@ public class ClaseDBCategorias extends ConectionDB {
 
         return resultSet;
     }
+
+    public ResultSet selectCategoriaRevistas(String nombreRevista) {
+        String select = "SELECT * FROM categoria_revista WHERE nombre_revista = '" + nombreRevista + "';";
+        ResultSet resultSet = selectData(select);
+
+        return resultSet;
+    }
+
     public void insertCategoriaRevista(String nombreRevista, String categoria) {
         String insert = "INSERT INTO categoria_revista (categoria, nombre_revista) "
                 + "values('" + categoria + "','" + nombreRevista + "');";

@@ -18,18 +18,19 @@ public class ClaseDBRevista extends ConectionDB {
     }
 
     public ResultSet selectRevistas() {
-        String select = "SELECT nombre_revista, usuario_publicador, precio_suscripcion FROM revista;";
+        String select = "SELECT nombre_revista, usuario_publicador, precio_suscripcion, descripción FROM revista;";
         ResultSet resultSet = selectData(select);
 
         return resultSet;
     }
 
     public void insertRevista(Revista revista) {
-        String insert = "INSERT INTO revista (nombre_revista, usuario_publicador,"
+        String insert = "INSERT INTO revista (nombre_revista, usuario_publicador, descripción,"
                 + "data_revista, nombre_archivo, extencion_archivo, precio_suscripcion) "
                 + "values('" + revista.getNombreRevista() + "','" + revista.getUsuarioPublicador() + "','"
-                + revista.getArchivoRevista() + "','" + revista.getNombreArchivo() + "','"
-                + revista.getExtencionArchivo() + "','" + revista.getPrecioRevista() + "');";
+                + revista.getDescripcion()+ "','" + revista.getArchivoRevista() + "','"
+                + revista.getNombreArchivo() + "','" + revista.getExtencionArchivo() + "','" 
+                + revista.getPrecioRevista() + "');";
 
         insertData(insert);
     }
