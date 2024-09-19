@@ -50,6 +50,7 @@
                                     <li><a class="dropdown-item" href="#">Ver Reportes</a></li>
                                     </c:when>
                                     <c:when test="${sessionScope.usuario.tipoUsuario == 'SUSCRIPTOR'}">
+                                    <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/revistas-suscritas/revistas-suscritas-servlet">Ver Revistas Suscritas</a></li>
                                     <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/acreditar-dinero/acreditar-dinero.jsp">Acrerditar Dinero</a></li>
                                     </c:when>
                                 </c:choose>

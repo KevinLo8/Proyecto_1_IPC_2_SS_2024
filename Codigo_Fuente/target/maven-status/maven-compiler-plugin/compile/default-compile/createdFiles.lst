@@ -2,6 +2,7 @@ com/main/codigo_fuente/app/controllers/acreditar_dinero/ControladorAcreditarDine
 com/main/codigo_fuente/app/controllers/perfil_usuario/ControladorPerfilUsuario.class
 com/main/codigo_fuente/app/backend/exceptions/DataErrorException.class
 com/main/codigo_fuente/app/backend/tags/Tag.class
+com/main/codigo_fuente/app/controllers/revistas_suscritas/ControladorRevistasSuscritas.class
 com/main/codigo_fuente/app/controllers/descargar_archivo/ControladorDecargarRevista.class
 com/main/codigo_fuente/app/backend/revista/Revista.class
 com/main/codigo_fuente/app/controllers/mostrador_revistas/ControladorMostrardorRevistas.class

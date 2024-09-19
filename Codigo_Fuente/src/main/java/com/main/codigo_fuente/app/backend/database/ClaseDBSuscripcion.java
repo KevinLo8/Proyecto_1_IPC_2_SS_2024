@@ -3,9 +3,6 @@ package com.main.codigo_fuente.app.backend.database;
 import com.main.codigo_fuente.app.backend.suscripcion.Suscripcion;
 import java.sql.*;
 
-import com.main.codigo_fuente.app.backend.usuarios.Usuario;
-import java.time.LocalDate;
-
 public class ClaseDBSuscripcion extends ConectionDB {
 
     public ClaseDBSuscripcion() {
@@ -14,6 +11,13 @@ public class ClaseDBSuscripcion extends ConectionDB {
     
     public ResultSet selectSuscripciones(String nombreRevista) {
         String select = "SELECT * FROM suscripción WHERE nombre_revista = '" + nombreRevista + "';";
+        ResultSet resultSet = selectData(select);
+
+        return resultSet;
+    }
+    
+    public ResultSet selectSuscripcionRevistas(String nombreUsuario) {
+        String select = "SELECT * FROM suscripción WHERE nombre_suscriptor = '" + nombreUsuario + "';";
         ResultSet resultSet = selectData(select);
 
         return resultSet;

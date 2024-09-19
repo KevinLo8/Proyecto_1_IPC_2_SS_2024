@@ -4,7 +4,6 @@
  */
 package com.main.codigo_fuente.app.backend.suscripcion;
 
-import com.main.codigo_fuente.app.backend.database.ClaseDBSuscripcion;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -14,11 +13,8 @@ import java.sql.SQLException;
  */
 public class Suscripciones {
 
-    public Suscripcion[] pedirSuscripciones(String nombreRevista) {
+    public Suscripcion[] pedirSuscripciones(ResultSet res) {
         Suscripcion[] suscripcionesOut = new Suscripcion[0];
-
-        ClaseDBSuscripcion db = new ClaseDBSuscripcion();
-        ResultSet res = db.selectSuscripciones(nombreRevista);
 
         try {
             while (res.next()) {
@@ -40,9 +36,6 @@ public class Suscripciones {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-
-        db.cerrarDB();
-
         return suscripcionesOut;
     }
 }
