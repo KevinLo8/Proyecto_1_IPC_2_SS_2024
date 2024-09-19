@@ -50,11 +50,10 @@
                     </div>
 
                     <div class="form-group text-start mt-3">
-                        <label for="usuarioRevista">Credito disponible</label>
                         <div class="input-group">
                             <span class="input-group-text">Cantidad de "Me Gusta"</span>
                             <input id="precio" type="number" min="0.01" step="0.01" 
-                                   class="form-control" on value="${revista.cantidadMeGusta}" disabled/>
+                                   class="form-control" value="${revista.cantidadMeGusta}" disabled/>
                         </div>
 
                     </div>

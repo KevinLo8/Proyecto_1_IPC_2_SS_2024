@@ -18,20 +18,38 @@ public class Revistas {
         try {
             while (resultSet.next()) {
                 Revista[] revistas = new Revista[revistasOut.length + 1];
-                
+
                 for (int i = 0; i < revistasOut.length; i++) {
                     revistas[i] = revistasOut[i];
                 }
-                
+
                 Revista revista = new Revista();
                 revista.crearResInfo(resultSet);
-                
+
                 revistas[revistasOut.length] = revista;
-                
+
                 revistasOut = revistas;
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
+        }
+
+        return revistasOut;
+    }
+
+    public static Revista[] recortasRevistas(Revista[] revistas, int tamaño) {
+        int j;
+        Revista[] revistasOut;
+        if (revistas.length > tamaño) {
+            revistasOut = new Revista[tamaño];
+            j = tamaño;
+        } else {
+            revistasOut = new Revista[revistas.length];
+            j = revistas.length;
+        }
+
+        for (int i = 0; i < j; i++) {
+                revistasOut[i] = revistas[i];
         }
 
         return revistasOut;
