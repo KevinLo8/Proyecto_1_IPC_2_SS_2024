@@ -20,7 +20,7 @@ public class ClaseDBSuscripcion extends ConectionDB {
     }
     
     public ResultSet selectSuscripcion(String nombreRevista, String nombreSuscriptor) {
-        String select = "SELECT * FROM suscripción WHERE nombre_revista = '" + nombreRevista + " AND nombre_suscriptor = " + nombreSuscriptor +"';";
+        String select = "SELECT * FROM suscripción WHERE nombre_revista = '" + nombreRevista + "' AND nombre_suscriptor = '" + nombreSuscriptor +"';";
         ResultSet resultSet = selectData(select);
 
         return resultSet;

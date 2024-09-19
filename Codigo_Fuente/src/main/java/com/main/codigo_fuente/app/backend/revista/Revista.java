@@ -8,6 +8,7 @@ import com.main.codigo_fuente.app.backend.archivo.Archivo;
 import com.main.codigo_fuente.app.backend.categoria.Categoria;
 import com.main.codigo_fuente.app.backend.database.*;
 import com.main.codigo_fuente.app.backend.exceptions.DataErrorException;
+import com.main.codigo_fuente.app.backend.suscripcion.Suscripcion;
 import com.main.codigo_fuente.app.backend.tags.Tag;
 import com.main.codigo_fuente.app.backend.usuarios.Usuario;
 import jakarta.servlet.ServletException;
@@ -155,12 +156,21 @@ public class Revista {
         ResultSet res = db.selectSuscripcion(nombreRevista, nombreUsuario);
 
         try {
-            return res.next();
+            while (res.next()) {
+                Suscripcion suscripcion = new Suscripcion();
+                suscripcion.crearRes(res);
+
+                if (suscripcion.estaActiva()) {
+                    suscrito = true;
+                    return true;
+                }
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return false;
 
+        suscrito = false;
+        return false;
     }
 
 }

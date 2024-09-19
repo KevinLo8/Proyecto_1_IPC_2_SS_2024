@@ -62,4 +62,14 @@ public class Usuario {
 
         db.updateCreditoUsuario(nombreUsuario, credito);
     }
+    
+    public void restarSaldo(Double cantidad, ClaseDBUsuario db) {
+        credito = credito - cantidad;
+
+        BigDecimal bd = new BigDecimal(credito);
+        bd.setScale(2, RoundingMode.CEILING);
+        credito = bd.doubleValue();
+
+        db.updateCreditoUsuario(nombreUsuario, credito);
+    }
 }

@@ -19,17 +19,11 @@
                 <li><a href="${pageContext.servletContext.contextPath}/mostrador-revistas/mostrador-revistas-servlet" class="nav-link px-2 text-info">Revistas</a></li>
             </ul>
 
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
-            </form>
-
             <c:choose>
                 <c:when test="${usuario == null}">
                     <div class="text-end">
-                        <button type="button" class="btn btn-outline-light me-2" 
-                                onclick="javascript:window.location = '${pageContext.servletContext.contextPath}/login/login.jsp';">Iniciar sesión</button>
-                        <button type="button" class="btn btn-warning"
-                                onclick="javascript:window.location = '${pageContext.servletContext.contextPath}/login/sign-up.jsp';">registrarse</button>
+                        <a type="button" class="btn btn-outline-light me-2" href="${pageContext.servletContext.contextPath}/login/login.jsp">Iniciar sesión</a>
+                        <a type="button" class="btn btn-warning" href="${pageContext.servletContext.contextPath}/login/sign-up.jsp">registrarse</a>
                     </div>
                 </c:when>
                 <c:otherwise>
@@ -56,7 +50,7 @@
                                     <li><a class="dropdown-item" href="#">Ver Reportes</a></li>
                                     </c:when>
                                     <c:when test="${sessionScope.usuario.tipoUsuario == 'SUSCRIPTOR'}">
-                                    <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/acreditar-dinero/acreditar-dinero-servlet">Acrerditar Dinero</a></li>
+                                    <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/acreditar-dinero/acreditar-dinero.jsp">Acrerditar Dinero</a></li>
                                     </c:when>
                                 </c:choose>
                             <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/inicio_sesion/cerrar_sesion-servlet">Cerrar Sesión</a></li>
