@@ -15,6 +15,7 @@ com/main/codigo_fuente/app/backend/suscripcion/Suscripciones.class
 com/main/codigo_fuente/app/controllers/agregar_categoria/ControladorAgregarCategoria.class
 com/main/codigo_fuente/app/backend/precios_anuncios/PreciosAnuncios.class
 com/main/codigo_fuente/app/controllers/editar_precios_revistas/ControladorEditarPrecioRevista.class
+com/main/codigo_fuente/app/controllers/editar_precios_revistas/suscripcion_revista/ControladorSuscripcionRevista.class
 com/main/codigo_fuente/app/controllers/compra_anuncio/ControladorCompraAnuncio.class
 com/main/codigo_fuente/app/controllers/agregar_tag/ControladorAgregarTag.class
 com/main/codigo_fuente/app/backend/revista/Revistas.class

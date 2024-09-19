@@ -17,7 +17,7 @@
         <jsp:include page="../includes/header.jsp"/>
         <div class="section">
             <div class="container offset-4 col-4 text-center">
-                <form method="POST" action="${pageContext.servletContext.contextPath}/precios-revistas/editar-precio-revista-servlet">
+                <form>
                     <div class="form-group text-start mt-3">
                         <label for="nombreRevista">Nombre de la revista</label>
                         <input type="text" class="form-control" value="${revista.nombreRevista}" disabled/>
@@ -51,7 +51,8 @@
 
                     <div class="container text-end mt-3">
                         <c:if test="${usuario.tipoUsuario == 'SUSCRIPTOR'}">
-                            <button class="btn btn-success mx-1">Suscribirse</button>
+                            <a href="${pageContext.servletContext.contextPath}/suscripcion-revista/suscripcion-revista-servlet?nombreRevista=${revista.nombreRevista}"
+                           class="btn btn-success mx-1">Suscribirse</a>
                         </c:if>
                         <a href="${pageContext.servletContext.contextPath}/mostrador-revistas/mostrador-revistas-servlet"
                            class="btn btn-primary mx-1" type="button">Regresar</a>
