@@ -18,7 +18,7 @@ public class ClaseDBRevista extends ConectionDB {
     }
 
     public ResultSet selectRevistas() {
-        String select = "SELECT nombre_revista, usuario_publicador, precio_suscripcion, descripción FROM revista;";
+        String select = "SELECT nombre_revista, usuario_publicador, precio_suscripcion, me_gusta, descripción FROM revista;";
         ResultSet resultSet = selectData(select);
 
         return resultSet;
@@ -37,6 +37,12 @@ public class ClaseDBRevista extends ConectionDB {
 
     public void updatePrecioRevista(String nombreRevista, Double precio) {
         String update = "UPDATE revista SET precio_suscripcion = '" + precio + "' WHERE nombre_revista = '" + nombreRevista + "';";
+        
+        insertData(update);
+    }
+
+    public void updateMeGustaRevista(String nombreRevista, int meGusta) {
+        String update = "UPDATE revista SET me_gusta = '" + meGusta + "' WHERE nombre_revista = '" + nombreRevista + "';";
         
         insertData(update);
     }

@@ -33,6 +33,7 @@ public class Revista {
     private String[] tags;
     private String categoria;
     private Boolean suscrito;
+    private int cantidadMeGusta;
 
     public String getNombreRevista() {
         return nombreRevista;
@@ -74,6 +75,10 @@ public class Revista {
         return suscrito;
     }
 
+    public int getCantidadMeGusta() {
+        return cantidadMeGusta;
+    }
+
     public void setPrecioRevista(HttpServletRequest req) {
         precioRevista = Double.valueOf(req.getParameter("precio"));
     }
@@ -112,6 +117,8 @@ public class Revista {
         BigDecimal bd = new BigDecimal(res.getDouble("precio_suscripcion"));
         bd.setScale(2, RoundingMode.CEILING);
         precioRevista = bd.doubleValue();
+
+        cantidadMeGusta = res.getInt("me_gusta");
     }
 
     public void crearResInfo(ResultSet res) throws SQLException {
@@ -124,6 +131,8 @@ public class Revista {
         BigDecimal bd = new BigDecimal(res.getDouble("precio_suscripcion"));
         bd.setScale(2, RoundingMode.CEILING);
         precioRevista = bd.doubleValue();
+
+        cantidadMeGusta = res.getInt("me_gusta");
     }
 
     public void guardarRevista() {
@@ -171,6 +180,16 @@ public class Revista {
 
         suscrito = false;
         return false;
+    }
+
+    public void agregarMeGusta() {
+        cantidadMeGusta++;
+    }
+
+    public void guardarMeGusta() {
+        ClaseDBRevista db = new ClaseDBRevista();
+        db.updateMeGustaRevista(nombreRevista, cantidadMeGusta);
+        db.cerrarDB();
     }
 
 }

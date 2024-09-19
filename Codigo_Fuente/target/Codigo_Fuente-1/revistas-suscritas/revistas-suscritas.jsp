@@ -21,12 +21,21 @@
             <c:forEach items="${suscripciones}" var="suscripcion">
                 <div class="container my-3">
                     <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title my-2 text-info">Nombre de la revista suscrita</h5>
-                            <h6 class="card-subtitle my-2 text-body-secondary">${suscripcion.nombreRevista}</h6>
-                            <h6 class="card-subtitle my-2 text-info">Fechas que se suscribio</h6>
-                            <p class="card-text my-2 loan-input">${suscripcion.fechaSuscripcion}</p>
-                        </div>
+                        <form method="POST" action="${pageContext.servletContext.contextPath}/revistas-me-gusta/revistas-me-gusta-servlet">
+
+                            <input type="hidden" class="form-control" name="nombreRevista" value="${suscripcion.nombreRevista}"/>
+
+                            <div class="card-body">
+                                <h5 class="card-title my-2 text-info">Nombre de la revista suscrita</h5>
+                                <h6 class="card-subtitle my-2 text-body-secondary">${suscripcion.nombreRevista}</h6>
+                                <h6 class="card-subtitle my-2 text-info">Fechas que se suscribio</h6>
+                                <p class="card-text my-2 loan-input">${suscripcion.fechaSuscripcion}</p>
+                            </div>
+                            <div class="container text-end mb-3">
+                                <button class="btn btn-success mx-1">Me Gusta</button>
+                            </div>
+                        </form>
+
                     </div>
                 </div>
             </c:forEach>
