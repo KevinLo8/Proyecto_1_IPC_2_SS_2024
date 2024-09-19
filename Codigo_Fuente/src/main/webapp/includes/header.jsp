@@ -37,7 +37,7 @@
                                     <c:when test="${sessionScope.usuario.tipoUsuario == 'ADMINISTRADOR'}">
                                     <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/precios-anuncios/crear-edicion-precios-servlet">Editar Precios de Anuncios</a></li>
                                     <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/precios-revistas/crear-edicion-revista-servlet">Editar Precios de Revistas</a></li>
-                                    <li><a class="dropdown-item" href="#">Ver Reportes</a></li>
+                                    <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/reportes/reportes-inicio.jsp">Ver Reportes</a></li>
                                     </c:when>
                                     <c:when test="${sessionScope.usuario.tipoUsuario == 'COMPRADOR'}">
                                     <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/compra_anuncio/Compra-Anuncio-servlet">Comprar Anuncio</a></li>
@@ -47,7 +47,7 @@
                                     <c:when test="${sessionScope.usuario.tipoUsuario == 'EDITOR'}">
                                     <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/publicar-revista/generar-publicacion-servlet">Publicar Revista</a></li>
                                     <li><a class="dropdown-item" href="#">Editar Revistas</a></li>
-                                    <li><a class="dropdown-item" href="#">Ver Reportes</a></li>
+                                    <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/reportes/reportes-inicio.jsp">Ver Reportes</a></li>
                                     </c:when>
                                     <c:when test="${sessionScope.usuario.tipoUsuario == 'SUSCRIPTOR'}">
                                     <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/revistas-suscritas/revistas-suscritas-servlet">Ver Revistas Suscritas</a></li>

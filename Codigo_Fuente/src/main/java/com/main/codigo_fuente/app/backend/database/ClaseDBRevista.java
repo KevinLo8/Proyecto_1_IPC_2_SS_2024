@@ -23,6 +23,13 @@ public class ClaseDBRevista extends ConectionDB {
 
         return resultSet;
     }
+    
+        public ResultSet selectRevistasGustadas() {
+        String select = "SELECT * FROM revista ORDER BY me_gusta DESC;";
+        ResultSet resultSet = selectData(select);
+
+        return resultSet;
+    }
 
     public void insertRevista(Revista revista) {
         String insert = "INSERT INTO revista (nombre_revista, usuario_publicador, descripción,"

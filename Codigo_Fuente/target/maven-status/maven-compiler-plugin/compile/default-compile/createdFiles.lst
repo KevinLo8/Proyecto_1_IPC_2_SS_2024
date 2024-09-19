@@ -7,6 +7,7 @@ com/main/codigo_fuente/app/controllers/descargar_archivo/ControladorDecargarRevi
 com/main/codigo_fuente/app/backend/revista/Revista.class
 com/main/codigo_fuente/app/controllers/mostrador_revistas/ControladorMostrardorRevistas.class
 com/main/codigo_fuente/app/backend/database/ClaseDBTags.class
+com/main/codigo_fuente/app/controllers/reportes/ControladorReporte5Gustados.class
 com/main/codigo_fuente/app/controllers/compra_anuncio/ControladorCompraAnuncio.class
 com/main/codigo_fuente/app/controllers/agregar_tag/ControladorAgregarTag.class
 com/main/codigo_fuente/app/controllers/mostrador_revistas/ControladorPrevisualizarRevista.class
