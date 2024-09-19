@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.main.codigo_fuente.app.controllers.editar_precios_revistas.suscripcion_revista;
+package com.main.codigo_fuente.app.controllers.suscripcion_revista;
 
 import com.main.codigo_fuente.app.backend.database.*;
 import com.main.codigo_fuente.app.backend.revista.Revista;
@@ -70,5 +70,4 @@ public class ControladorSuscripcionRevista extends HttpServlet {
         req.setAttribute("revista", revista);
         req.getRequestDispatcher("/suscripcion-revista/suscripcion-revista.jsp").forward(req, resp);
     }
-
 }
