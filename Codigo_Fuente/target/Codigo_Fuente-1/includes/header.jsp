@@ -32,7 +32,7 @@
                             ${nombreUsuario}
                         </a>
                         <ul class="dropdown-menu" style="">
-                            <li><a class="dropdown-item" href="#">Ver Perfil</a></li>
+                            <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/perfil-usuario/perfil-usuario.jsp">Ver Perfil</a></li>
                                 <c:choose>
                                     <c:when test="${sessionScope.usuario.tipoUsuario == 'ADMINISTRADOR'}">
                                     <li><a class="dropdown-item" href="${pageContext.servletContext.contextPath}/precios-anuncios/crear-edicion-precios-servlet">Editar Precios de Anuncios</a></li>

@@ -10,7 +10,7 @@ public class ClaseDBUsuario extends ConectionDB {
     public ClaseDBUsuario() {
         super();
     }
-    
+
     public ResultSet selectUser(String usuario) {
         String select = "SELECT * FROM usuario WHERE nombre_usuario = '" + usuario + "';";
         ResultSet resultSet = selectData(select);
@@ -26,7 +26,7 @@ public class ClaseDBUsuario extends ConectionDB {
             statementInsert.setString(1, usuario);
             statementInsert.setString(2, contraseña);
 
-            ResultSet resultSet = statementInsert.executeQuery();            
+            ResultSet resultSet = statementInsert.executeQuery();
             return resultSet;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -42,10 +42,18 @@ public class ClaseDBUsuario extends ConectionDB {
 
         insertData(insert);
     }
-    
-        public void updateCreditoUsuario(String nombreUsuario, Double credito) {
+
+    public void updateCreditoUsuario(String nombreUsuario, Double credito) {
         String update = "UPDATE usuario SET credito = '" + credito + "' WHERE nombre_usuario = '" + nombreUsuario + "';";
-        
+
+        insertData(update);
+    }
+
+    public void updateInfoUsuario(Usuario usuario) {
+        String update = "UPDATE usuario SET hobbies = '" + usuario.getHobbies() + "' AND temas_interes = '" + usuario.getTemasInteres()
+                + "' AND descripción = '" + usuario.getDescripcion() + "' AND gustos = '" + usuario.getGustos() 
+                + "' WHERE nombre_usuario = '" + usuario.getNombreUsuario() + "';";
+
         insertData(update);
     }
 

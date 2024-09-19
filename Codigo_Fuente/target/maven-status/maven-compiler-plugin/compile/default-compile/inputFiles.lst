@@ -1,6 +1,7 @@
 /home/kevin/Documentos/developments/IPC_2/Proyecto_1_IPC_2/Codigo_Fuente/src/main/java/com/main/codigo_fuente/app/backend/tags/Tag.java
 /home/kevin/Documentos/developments/IPC_2/Proyecto_1_IPC_2/Codigo_Fuente/src/main/java/com/main/codigo_fuente/app/backend/anuncio/Anuncio.java
 /home/kevin/Documentos/developments/IPC_2/Proyecto_1_IPC_2/Codigo_Fuente/src/main/java/com/main/codigo_fuente/app/controllers/acreditar_dinero/ControladorAcreditarDinero.java
+/home/kevin/Documentos/developments/IPC_2/Proyecto_1_IPC_2/Codigo_Fuente/src/main/java/com/main/codigo_fuente/app/controllers/descargar_archivo/ControladorDecargarRevista.java
 /home/kevin/Documentos/developments/IPC_2/Proyecto_1_IPC_2/Codigo_Fuente/src/main/java/com/main/codigo_fuente/app/backend/database/ClaseDBSuscripcion.java
 /home/kevin/Documentos/developments/IPC_2/Proyecto_1_IPC_2/Codigo_Fuente/src/main/java/com/main/codigo_fuente/JakartaRestConfiguration.java
 /home/kevin/Documentos/developments/IPC_2/Proyecto_1_IPC_2/Codigo_Fuente/src/main/java/com/main/codigo_fuente/app/controllers/editar_precios_revistas/ControladorEditarPrecioRevista.java
@@ -12,13 +13,13 @@
 /home/kevin/Documentos/developments/IPC_2/Proyecto_1_IPC_2/Codigo_Fuente/src/main/java/com/main/codigo_fuente/app/backend/database/ClaseDBUsuario.java
 /home/kevin/Documentos/developments/IPC_2/Proyecto_1_IPC_2/Codigo_Fuente/src/main/java/com/main/codigo_fuente/app/backend/database/ClaseDBTags.java
 /home/kevin/Documentos/developments/IPC_2/Proyecto_1_IPC_2/Codigo_Fuente/src/main/java/com/main/codigo_fuente/app/backend/archivo/Archivo.java
+/home/kevin/Documentos/developments/IPC_2/Proyecto_1_IPC_2/Codigo_Fuente/src/main/java/com/main/codigo_fuente/app/controllers/suscripcion_revista/ControladorSuscripcionRevista.java
 /home/kevin/Documentos/developments/IPC_2/Proyecto_1_IPC_2/Codigo_Fuente/src/main/java/com/main/codigo_fuente/app/controllers/mostrador_revistas/ControladorMostrardorRevistas.java
 /home/kevin/Documentos/developments/IPC_2/Proyecto_1_IPC_2/Codigo_Fuente/src/main/java/com/main/codigo_fuente/app/controllers/agregar_categoria/ControladorAgregarCategoria.java
 /home/kevin/Documentos/developments/IPC_2/Proyecto_1_IPC_2/Codigo_Fuente/src/main/java/com/main/codigo_fuente/app/backend/usuarios/TipoUsuarioEnum.java
 /home/kevin/Documentos/developments/IPC_2/Proyecto_1_IPC_2/Codigo_Fuente/src/main/java/com/main/codigo_fuente/app/backend/database/ClaseDBCategorias.java
 /home/kevin/Documentos/developments/IPC_2/Proyecto_1_IPC_2/Codigo_Fuente/src/main/java/com/main/codigo_fuente/app/controllers/agregar_categoria/ControladorCrearAgregarCategoria.java
 /home/kevin/Documentos/developments/IPC_2/Proyecto_1_IPC_2/Codigo_Fuente/src/main/java/com/main/codigo_fuente/app/controllers/compra_anuncio/ControladorCompraAnuncio.java
-/home/kevin/Documentos/developments/IPC_2/Proyecto_1_IPC_2/Codigo_Fuente/src/main/java/com/main/codigo_fuente/app/controllers/editar_precios_revistas/suscripcion_revista/ControladorSuscripcionRevista.java
 /home/kevin/Documentos/developments/IPC_2/Proyecto_1_IPC_2/Codigo_Fuente/src/main/java/com/main/codigo_fuente/app/controllers/mostrador_revistas/ControladorPrevisualizarRevista.java
 /home/kevin/Documentos/developments/IPC_2/Proyecto_1_IPC_2/Codigo_Fuente/src/main/java/com/main/codigo_fuente/app/controllers/inicio_sesion/ControladorInicioSesion.java
 /home/kevin/Documentos/developments/IPC_2/Proyecto_1_IPC_2/Codigo_Fuente/src/main/java/com/main/codigo_fuente/app/backend/exceptions/DataEmptyException.java
